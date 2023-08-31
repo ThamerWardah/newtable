@@ -1,11 +1,10 @@
 import Link from "next/link";
-import currentUser from "../../actions/getStudent";
 import TheTable from "../../components/theTable";
+import finished from '../../actions/finished';
 
 export default async function Table(){
-    
-    const data2 = await currentUser();
-    const data = data2?.finished[0].finished.split('_') || []
+    const data = await finished();
+  
     return(
         <div>
             <div>

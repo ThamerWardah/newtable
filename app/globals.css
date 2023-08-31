@@ -14,3 +14,10 @@ body,
     box-sizing: border-box;
     touch-action:pan-y;
 }
+
+.no-copy {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
