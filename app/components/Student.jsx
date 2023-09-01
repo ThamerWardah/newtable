@@ -51,7 +51,7 @@ const handleAdd = async()=>{
 
                     {a.map(item=>(<div key={item.name} className={clsx(`px-2 rounded-sm ${stagesItemsColors[index]}`,(student.finished.includes(item.name)||oldFinished.includes(item.name))&& 'opacity-30')} >
 
-                       <button disabled={(student.finished.includes(item.name || oldFinished.includes(item.name)))?true:false} onClick={(e)=>setFinishedItems([...finishedItems,e.target.value])} value={item.name}>{item.name}</button>
+                       <button disabled={(student.finished.includes(item.name)|| oldFinished.includes(item.name))?true:false} onClick={(e)=>setFinishedItems([...finishedItems,e.target.value])} value={item.name}>{item.name}</button>
 
                          </div>))}
 
