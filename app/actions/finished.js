@@ -7,5 +7,13 @@ const finihsed = async()=>{
 
     return finish ;
 };
+const finishedId = async()=>{
+    const user = await currentUser();
+    const finish =  user?.finished[0]?.id
 
-export default finihsed ;
+    return finish ;
+};
+
+
+
+export  {finihsed , finishedId};

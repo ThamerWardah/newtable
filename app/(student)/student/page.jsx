@@ -1,5 +1,5 @@
 import Student from '../../components/Student';
-import finihsed from '../../actions/finished';
+import {finihsed} from '../../actions/finished';
 import { Items } from '../../components/data';
 
 const student = async()=>{

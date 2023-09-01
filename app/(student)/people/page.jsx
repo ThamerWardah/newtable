@@ -1,6 +1,6 @@
 import Link from "next/link";
 import TheTable from "../../components/theTable";
-import finished from '../../actions/finished';
+import {finished} from '../../actions/finished';
 
 export default async function Table(){
     const data = await finished();

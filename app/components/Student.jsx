@@ -23,6 +23,11 @@ const handleAdd = async()=>{
     axios.post('api/finishedItems',fn).then(()=>toast.success('Done')).catch(()=>toast.error('Something went wrong'));
     
 }
+const handleUpdate = async()=>{
+    const fn = {finishedArray:student.finished.join('_')+'_'+oldFinished.join('_')}
+    axios.post('api/update',fn).then(()=>toast.success('Done')).catch(()=>toast.error('Something went wrong'));
+    
+}
 
 
     return(
@@ -56,8 +61,11 @@ const handleAdd = async()=>{
                          </div>))}
 
                      </div>)}
-                     <div className="flex justify-center">
-                            <button onClick={()=>handleAdd()} className="border-2 border-green-500 px-2 rounded-se-lg">Add</button>
+                     <div className="flex justify-center">{!parseInt(oldFinished.length)>0?
+                            <button onClick={()=>handleAdd()} className="border-2 border-green-500 px-2 rounded-se-lg">Add</button>:
+                            <button onClick={()=>handleUpdate()} className="border-2 border-green-500 px-2 rounded-se-lg">Update</button>
+                            
+                            }
                      </div>
                 </div>
 
