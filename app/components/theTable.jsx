@@ -109,10 +109,10 @@ const lectureTimes = lectureTime;
                 <div className="grid grid-rows-5 grid-cols-6">
                     {newTable.map((item,index)=><div key={index}>
                         <div className="my-2 text-center">
-                            <h1 className="font-bold bg-gray-100">
+                            <h1 className="font-bold text-[8px] bg-gray-100">
                                  {lectureTimes[index]}
                             </h1>
-                            <h1 className={`text-xs text_shadow py-2 font-bold ${newTable[index][secondStep[index]]?color[newTable[index][secondStep[index]]]:"bg-gray-100"}`}>
+                            <h1 className={`text-xs  py-2 font-bold ${newTable[index][secondStep[index]]?color[newTable[index][secondStep[index]]]:"bg-gray-100"}`}>
                                 {newTable[index][secondStep[index]]?newTable[index][secondStep[index]]:<p className="text-red-600">_ _ _  </p>}
                             </h1>
                         </div>
