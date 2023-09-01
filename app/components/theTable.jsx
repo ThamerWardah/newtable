@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react"
-import {Items , Items2 , table , lectureTime ,colors} from '../components/data'
+import {Items , Items2 , table , lectureTime ,colors} from '../components/data';
+import clsx from "clsx";
 
 
 export default  function TheTable({finishedFetch}){
@@ -106,8 +107,9 @@ const lectureTimes = lectureTime;
       const ICO = newToFinish.filter(item=>Items[item?.slice(0,4)]?.cat === 'CO').map(a=>a?.slice(0,4));
         let ICO_Unit = Level({finished:ICO});
 
-
- 
+       const cat_color = {DM:'border-red-500',DO:'border-green-400',UM:'border-yellow-600',CM:'border-blue-500',CO:'border-black/70'};
+       const cat_shadow = {DM:'shadow-red-500/80',DO:'shadow-green-400/90',UM:'shadow-yellow-600/90',CM:'shadow-blue-500',CO:'shadow-black/60'}
+      
 
 
     return (
@@ -123,16 +125,16 @@ const lectureTimes = lectureTime;
                     {!takeItem.includes(item) && !availableCompare.includes(item)&& <button value={item} onClick={(e)=>{
                             setTakeItem([...takeItem,e.target.value]);
                             setNewToFinish([...newToFinish,e.target.value])
-                            }} className=" border-2 border-green-300  bg-white rounded-md px-1 ">{item}</button>}
+                            }} className={` border-2 outline-none shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-md px-1 `}>{item}</button>}
                     </div>)}
              </div>  
             </div>
-            <div className="w-1/2 flex flex-col gap-4 text-end text-[8px] font-bold mb-2">
-                              <h1>71\{IDM_Unit?IDM_Unit:0} = متطلبات القسم الاجباريه</h1>
-                              <h1>30\{IDO_Unit?IDO_Unit:0} = متطلبات القسم الاختياريه</h1>
-                              <h1>13\{IUM_Unit?IUM_Unit:0} = متطلبات الجامعه الاجباريه</h1>
-                              <h1>12\{ICM_Unit?ICM_Unit:0} = متطلبات الكليه الاجباريه</h1>
-                              <h1>14\{ICO_Unit?ICO_Unit:0} = متطلبات الكليه الاختياريه</h1> 
+            <div className="w-1/2 flex flex-col gap-2 text-end text-[10px] font-bold mb-2">
+                              <h1 className="text-red-500">71\<span className="text-[12px]">{IDM_Unit?IDM_Unit:0}</span> = متطلبات القسم الاجباريه</h1>
+                              <h1 className="text-green-400">30\<span className="text-[12px]">{IDO_Unit?IDO_Unit:0}</span> = متطلبات القسم الاختياريه</h1>
+                              <h1 className="text-blue-500">13\<span className="text-[12px]">{IUM_Unit?IUM_Unit:0}</span> = متطلبات الجامعه الاجباريه</h1>
+                              <h1 className="text-yellow-600">12\<span className="text-[12px]">{ICM_Unit?ICM_Unit:0}</span> = متطلبات الكليه الاجباريه</h1>
+                              <h1 className="text-black">14\<span className="text-[12px]">{ICO_Unit?ICO_Unit:0}</span> = متطلبات الكليه الاختياريه</h1> 
                       </div>
             </div>
             <div className="bg-green-300 p-1 rounded-md">
@@ -163,7 +165,7 @@ const lectureTimes = lectureTime;
                              
 
             <div className="flex flex-wrap  mt-4 text-sm font-bold gap-2">{takeItem.map((item,index)=><div key={index}>
-            { <button value={item} onClick={(e)=>handleRemove(e.target.value)} className=" border-2 border-blue-500  bg-white rounded-full px-2">{item}</button>}
+            { <button value={item} onClick={(e)=>handleRemove(e.target.value)} className={` border-2 outline-none  ${cat_color[Items[item?.slice(0,4)]?.cat]} shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]} bg-white rounded-md px-1`}>{item}</button>}
             </div>)}</div>
 
         </div>
