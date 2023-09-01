@@ -37,7 +37,7 @@ const handleUpdate = async()=>{
     
 }
 
-    let someChangHappend = (finishedItems.filter(a=>!oldFinished?.includes(a)).length===0 && oldFinished.filter(b=>!finishedItems?.includes(b)).length===0);
+    let someChangHappend = !(finishedItems.filter(a=>!oldFinished?.includes(a)).length===0 && oldFinished.filter(b=>!finishedItems?.includes(b)).length===0);
     return(
         <div className="w-full h-full p-4 font-bold text-sm">
 
@@ -69,8 +69,8 @@ const handleUpdate = async()=>{
                          </div>))}
 
                      </div>)}
-                     <div className="flex justify-center">{!parseInt(oldFinished.length)>0?
-                            <button onClick={()=>handleAdd()} className="border-2 border-green-500 px-2 rounded-se-lg">Add</button>:(!someChangHappend &&
+                     <div className="flex justify-center">{(!parseInt(oldFinished.length)&&someChangHappend)>0?
+                            <button onClick={()=>handleAdd()} className="border-2 border-green-500 px-2 rounded-se-lg">Add</button>:(someChangHappend &&
                             <button onClick={()=>handleUpdate()} className="border-2 border-green-500 px-2 rounded-se-lg">Update</button>)
                             
                             }
