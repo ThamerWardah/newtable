@@ -91,14 +91,14 @@ const lectureTimes = lectureTime;
         <div className="w-full h-full px-2 py-4 ">
             
               <div className=" w-full  px-2 h-32">
-            <div className="flex flex-wrap gap-1 text-sm font-bold">
+            <div className="flex flex-wrap gap-1 text-[10px] font-bold">
                     {available2.map((item,index)=><div key={index}>
-                    {!takeItem.includes(item) && !availableCompare.includes(item)&& <button value={item} onClick={(e)=>setTakeItem([...takeItem,e.target.value])} className=" border-2 border-green-300  bg-white rounded-lg px-2 ">{item}</button>}
+                    {!takeItem.includes(item) && !availableCompare.includes(item)&& <button value={item} onClick={(e)=>setTakeItem([...takeItem,e.target.value])} className=" border-2 border-green-300  bg-white rounded-md px-2 ">{item}</button>}
                     </div>)}
             </div> 
             </div>
             <div className="bg-green-300 p-1 rounded-md">
-             <div className="bg-white overflow-hidden shadow-lg shadow-black/60 rounded-lg rounded-tl-[80px] p-1 text-xs">
+             <div className="bg-white overflow-hidden shadow-lg shadow-black/60 rounded-lg rounded-tl-[80px] p-1 text-[10px]">
                
                 <div className="w-20 h-20 rounded-full relative bg-gray-100 shadow-md shadow-green-500 flex justify-center items-center overflow-hidden">
                 <h1 className="text-2xl font-bold z-10">{numberOfUnit?numberOfUnit:0}</h1>
