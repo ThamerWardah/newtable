@@ -5,13 +5,14 @@ import {Items , Items2 , table , lectureTime ,colors} from '../components/data'
 
 export default  function TheTable({finishedFetch}){
 
-    const student =   {name:'Hussien',id:1,finished:finishedFetch}
+    const student =   {finished:finishedFetch}
 const lectureTimes = lectureTime;
   const [takeItem,setTakeItem] = useState([]);
+  const [newToFinish,setNewToFinish]= useState(student.finished)
   
   const Level = (theStudent)=>{
       let sum =0 ;
-      return theStudent.finished.map(item => Items[item]).map(item=>item.significant).map(item=> sum+= parseInt(item)).pop();
+      return theStudent.finished.map(item => Items[item]).map(item=>(item).significant).map(item=> sum+= parseInt(item)).pop();
     };
  const studentOpenItems = (studentOpen)=>{
       return Items2.filter(item2=> item2.level<= studentOpen.level && (item2.pre ==='none'|| studentOpen.finished.includes(item2.pre)) && !studentOpen.finished.includes(item2.name)) 
@@ -41,7 +42,8 @@ const lectureTimes = lectureTime;
    
     const handleRemove = (e)=>{
       const remove = takeItem.filter(item=>item !== e);
-      setTakeItem(remove)
+      setTakeItem(remove);
+      setNewToFinish([...finishedFetch,...remove])
     }
 
     // solveing the same time items issue 
@@ -87,15 +89,51 @@ const lectureTimes = lectureTime;
       for (let k = 0; k < available.length; k++) {
         color[available[k]]=colors[k]
       }
+
+//======== Cat items ======
+      const IDM = newToFinish.filter(item=>Items[item?.slice(0,4)]?.cat === 'DM').map(a=>a?.slice(0,4));
+        let IDM_Unit = Level({finished:IDM});
+
+      const IDO = newToFinish.filter(item=>Items[item?.slice(0,4)]?.cat === 'DO').map(a=>a?.slice(0,4));
+        let IDO_Unit = Level({finished:IDO});
+
+      const IUM = newToFinish.filter(item=>Items[item?.slice(0,4)]?.cat === 'UM').map(a=>a?.slice(0,4));
+        let IUM_Unit = Level({finished:IUM});
+
+      const ICM = newToFinish.filter(item=>Items[item?.slice(0,4)]?.cat === 'CM').map(a=>a?.slice(0,4));
+        let ICM_Unit = Level({finished:ICM});
+
+      const ICO = newToFinish.filter(item=>Items[item?.slice(0,4)]?.cat === 'CO').map(a=>a?.slice(0,4));
+        let ICO_Unit = Level({finished:ICO});
+
+
+ 
+
+
     return (
         <div className="w-full h-full px-2 py-4 ">
-            
-              <div className=" w-full  px-2 h-32">
-            <div className="flex flex-wrap gap-1 text-[10px] font-bold">
+
+               
+
+            <div className="flex justify-between gap-2">
+              <div className=" w-1/2 px-2 h-32 ">
+
+               <div className="flex flex-wrap gap-1 text-[8px] font-bold">
                     {available2.map((item,index)=><div key={index}>
-                    {!takeItem.includes(item) && !availableCompare.includes(item)&& <button value={item} onClick={(e)=>setTakeItem([...takeItem,e.target.value])} className=" border-2 border-green-300  bg-white rounded-md px-2 ">{item}</button>}
+                    {!takeItem.includes(item) && !availableCompare.includes(item)&& <button value={item} onClick={(e)=>{
+                            setTakeItem([...takeItem,e.target.value]);
+                            setNewToFinish([...newToFinish,e.target.value])
+                            }} className=" border-2 border-green-300  bg-white rounded-md px-1 ">{item}</button>}
                     </div>)}
-            </div> 
+             </div>  
+            </div>
+            <div className="w-1/2 flex flex-col gap-4 text-end text-[8px] font-bold mb-2">
+                              <h1>71\{IDM_Unit?IDM_Unit:0} = متطلبات القسم الاجباريه</h1>
+                              <h1>30\{IDO_Unit?IDO_Unit:0} = متطلبات القسم الاختياريه</h1>
+                              <h1>13\{IUM_Unit?IUM_Unit:0} = متطلبات الجامعه الاجباريه</h1>
+                              <h1>12\{ICM_Unit?ICM_Unit:0} = متطلبات الكليه الاجباريه</h1>
+                              <h1>14\{ICO_Unit?ICO_Unit:0} = متطلبات الكليه الاختياريه</h1> 
+                      </div>
             </div>
             <div className="bg-green-300 p-1 rounded-md">
              <div className="bg-white overflow-hidden shadow-lg shadow-black/60 rounded-lg rounded-tl-[80px] p-1 text-[10px]">
