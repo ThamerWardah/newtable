@@ -3,7 +3,7 @@ import currentUser from './getStudent';
 
 const finihsed = async()=>{
     const user = await currentUser();
-    const finish =  ( (user?.finished[0]?.finished.split('_'))[0] ===""?[]:(user?.finished[0]?.finished.split('_')) ) || [];
+    const finish =  ( (user?.finished[0]?.finished ==="")?[]:(user?.finished[0]?.finished.split('_')) ) || [];
 
     return finish ;
 };
