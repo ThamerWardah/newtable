@@ -55,8 +55,8 @@ const AddDistributor = ()=>{
 
         if(variant === 'login' ){
             signIn('credentials',{...data,redirect:false}).then((callback)=>{
-                if(!callback?.error){toast.success("Loged in")};
-                if(callback?.error){toast.error(callback.error)}
+                if(!callback?.error){toast.success("Loged in"); router.refresh()};
+                if(callback?.error){toast.error(callback.error)};
             }).finally(setIsLoading(false))
         }
     }
@@ -79,7 +79,7 @@ const AddDistributor = ()=>{
                         <option value="geology">Geology</option>
                    </select> }
 
-                    <button className={clsx(`border-2 rounded-tr-full mt-4 rounded-bl-full bg-gradient-to-tr from-blue-500 to-green-300 shadow-lg shadow-gray-400 border-none  text-gray-800 font-bold`,isLoading&&'opacity-50 ')}>{variant ==='signin' ?"Register":"Sign in"}</button>
+                    <button className={clsx(`border-2 rounded-tr-full mt-4 rounded-bl-full bg-gradient-to-tr from-blue-500 to-green-300 shadow-lg shadow-gray-400 border-none  text-gray-800 font-bold`,isLoading&&'opacity-50 ')}>{variant ==='signin' ?"انشاء":"تسجيل الدخول"}</button>
                 </form>
         </div>
 

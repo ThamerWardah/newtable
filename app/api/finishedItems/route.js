@@ -11,7 +11,8 @@ export async function POST(request){
     const finished = await prisma.finished.create({
         data:{
             finished:finishedArray,
-            studentId:currentUserId
+            studentId:currentUserId,
+            addManualOpenItems:[],
         }
     });
 

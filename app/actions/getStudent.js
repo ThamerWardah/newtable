@@ -16,7 +16,8 @@ export default async function currentUser(){
         where:{
             email:session?.user?.email 
         },
-        include:{finished:true}
+        include:{finished:true,
+        }
     });
 
     return theCurrentUser

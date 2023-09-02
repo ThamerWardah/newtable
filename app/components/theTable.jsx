@@ -6,8 +6,8 @@ import {Items , Items2 , table , lectureTime ,colors} from '../components/data';
 
 export default  function TheTable({finishedFetch}){
 
-    const student =   {finished:finishedFetch}
-const lectureTimes = lectureTime;
+  const student =   {finished:finishedFetch}
+  const lectureTimes = lectureTime;
   const [takeItem,setTakeItem] = useState([]);
   const [newToFinish,setNewToFinish]= useState(student.finished)
   
@@ -21,7 +21,7 @@ const lectureTimes = lectureTime;
 
 
     const studentLevel = Level(student);
-    const studentWithLevel = {...student,level:Math.ceil(studentLevel/35)+2};
+    const studentWithLevel = {...student,level:Math.ceil(studentLevel/35 +0.005)+1};
 
     const openItems = studentOpenItems(studentWithLevel) ;
     const openItemsNames = openItems.map(item=>item.name)

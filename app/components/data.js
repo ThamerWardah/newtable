@@ -1,3 +1,4 @@
+ 
  const colors = ['bg-green-200','bg-slate-300','bg-red-300','bg-purple-400','bg-yellow-300','bg-orange-400','bg-teal-300','bg-amber-400','bg-indigo-400','bg-pink-500','bg-lime-200','bg-blue-300','bg-emerald-200','bg-cyan-300','bg-sky-500','bg-violet-400','bg-fuchsia-400','bg-rose-400','bg-white','bg-red-200','bg-slate-400','bg-blue-200','bg-rose-500','bg-green-100','bg-slate-300','bg-red-300','bg-purple-400','bg-yellow-300','bg-orange-400','bg-teal-300','bg-amber-400','bg-indigo-400','bg-pink-500','bg-lime-200','bg-blue-300','bg-emerald-200','bg-cyan-300','bg-sky-500','bg-violet-400','bg-fuchsia-400','bg-rose-400','bg-white','bg-red-200','bg-slate-400','bg-blue-200','bg-rose-500'];
 
 
@@ -196,6 +197,5 @@
 const lectureTime = ['8:30-9:30','9:30-10:30','10:30-11:30','11:30-12:30','12:30-1:30','1:30-2:30','8:30-9:30','9:30-10:30','10:30-11:30','11:30-12:30','12:30-1:30','1:30-2:30','8:30-9:30','9:30-10:30','10:30-11:30','11:30-12:30','12:30-1:30','1:30-2:30','8:30-9:30','9:30-10:30','10:30-11:30','11:30-12:30','12:30-1:30','1:30-2:30','8:30-9:30','9:30-10:30','10:30-11:30','11:30-12:30','12:30-1:30','1:30-2:30',]
 
 
-  const student =   {name:'Hussien',id:1,finished:['M101','M102','M103','M104','M104','M107']}
 
-  export {Items , Items2  , table , lectureTime , colors}
+  export {Items , Items2  , table , lectureTime , colors }

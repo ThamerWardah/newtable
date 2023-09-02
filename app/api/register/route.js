@@ -23,7 +23,7 @@ export async function POST(request){
             name,
             email,
             password:hashedPassword,
-            department
+            department,
         }
     })
 
