@@ -20,7 +20,7 @@ const AddDistributor = ()=>{
 
     const router = useRouter()
     const [data ,setData] = useState(initialData);
-    const [variant , setVariant] = useState('signin');
+    const [variant , setVariant] = useState('login');
     const [isLoading , setIsLoading] = useState(false);
 
     useEffect(()=>{
@@ -63,15 +63,15 @@ const AddDistributor = ()=>{
 
     return(
         <div className="w-full h-full">
-        <div className="flex justify-center mt-10 ">
+        <div className="flex mt-8">
        
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-3/4 mb-20">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-sm mb-10">
 
-                 {variant === 'signin' &&  <Input type='text' placeholder='Name' disabled={isLoading} value={data.name} onChange={(e)=>setData({...data,name:e.target.value})}/> }
+                 {variant === 'signin' &&  <Input type='text' dir='rtl' placeholder='الاسم' disabled={isLoading} value={data.name} onChange={(e)=>setData({...data,name:e.target.value})}/> }
 
-                   <Input  type='email' placeholder='Email' disabled={isLoading} value={data.email} onChange={(e)=>setData({...data,email:e.target.value})}/>
+                   <Input  type='email' dir='ltr' placeholder='Email' disabled={isLoading} value={data.email} onChange={(e)=>setData({...data,email:e.target.value})}/>
 
-                   <Input type='password' placeholder='Password' disabled={isLoading} value={data.password} onChange={(e)=>setData({...data,password:e.target.value})}/>
+                   <Input type='password' dir='ltr' placeholder='Password' disabled={isLoading} value={data.password} onChange={(e)=>setData({...data,password:e.target.value})}/>
 
                    {variant === 'signin' &&  <select className="text-center font-bold text-sm" onChange={(e)=>setData({...data,department:e.target.value})}>
                         <option value="mathmatics" >Mathmatics</option>
@@ -83,7 +83,7 @@ const AddDistributor = ()=>{
                 </form>
         </div>
 
-        <div className="text-center flex gap-4 justify-center "><h1>{variant === 'signin'?"Already have an account" : "Create new account"}</h1><button className="underline text-gray-500 " type="button" onClick={()=>toggleVariant()}>{variant === 'signin'?"Sign in" : "Register"}</button></div>
+        <div dir="rtl" className="text-center flex gap-4 justify-center  "><h1>{variant === 'signin'?"لدي حساب" : "لا املك حساب"}</h1><button className="underline text-gray-500 " type="button" onClick={()=>toggleVariant()}>{variant === 'signin'?"تسحيل الدخول" : "انشاء حساب "}</button></div>
         </div>
     )
 }

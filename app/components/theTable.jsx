@@ -108,7 +108,7 @@ const lectureTimes = lectureTime;
         let ICO_Unit = Level({finished:ICO});
 
        const cat_color = {DM:'border-red-500/80',DO:'border-green-400/80',UM:'border-yellow-600/80',CM:'border-blue-500/80',CO:'border-black/70'};
-       const cat_shadow = {DM:'shadow-red-500/80',DO:'shadow-green-400/80',UM:'shadow-yellow-600/80',CM:'shadow-blue-500/80',CO:'shadow-black/60'}
+       const cat_shadow = {DM:'shadow-red-500/70',DO:'shadow-green-400/80',UM:'shadow-yellow-600/80',CM:'shadow-blue-500/80',CO:'shadow-black/70'}
       
 
 
@@ -118,15 +118,15 @@ const lectureTimes = lectureTime;
                
 
             <div className="flex justify-between gap-1">
-              <div className=" w-1/2 px-1 h-32 ">
+              <div className=" w-1/2  h-32 ">
 
-               <div className="flex flex-wrap gap-1 text-[8px] font-bold">
-                    {available2.map((item,index)=><div key={index}>
-                    {!takeItem.includes(item) && !availableCompare.includes(item)&& <button value={item} onClick={(e)=>{
+               <div className="grid grid-cols-4  gap-2 text-[8px] font-bold">
+                    {available2.map((item,index)=><>
+                    {!takeItem.includes(item) && !availableCompare.includes(item)&& <button key={index} value={item} onClick={(e)=>{
                             setTakeItem([...takeItem,e.target.value]);
                             setNewToFinish([...newToFinish,e.target.value])
-                            }} className={` border-2 outline-none shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-md px-1 `}>{item}</button>}
-                    </div>)}
+                            }} className={` outline-none border-s-2 shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm px-1 `}>{item}</button>}
+                    </>)}
              </div>  
             </div>
             <div className="w-1/2 flex flex-col gap-2 text-end text-[10px] font-bold mb-2">
