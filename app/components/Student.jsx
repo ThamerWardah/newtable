@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 
-export default function Student({oldFinished ,studentLevel}){
+export default function Student({oldFinished ,studentLevel, errorFinished}){
  const session = useSession();
  const rout = useRouter();
 const [finishedItems , setFinishedItems] = useState(oldFinished);
@@ -78,7 +78,7 @@ const handleUpdate = async()=>{
 
                      </div>)}
                 </div>
-                     <div className="flex justify-center text-gray-800 mt-4">{(!parseInt(oldFinished.length)&&someChangHappend)>0?
+                     <div className="flex justify-center text-gray-800 mt-4">{(!parseInt(errorFinished.length)>0 && someChangHappend)?
                             <button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">Add</button>:(someChangHappend &&
                             <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">Update</button>)
                             
