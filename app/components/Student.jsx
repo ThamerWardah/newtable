@@ -39,28 +39,36 @@ const handleUpdate = async()=>{
 
     let someChangHappend = !(finishedItems.filter(a=>!oldFinished?.includes(a)).length===0 && oldFinished.filter(b=>!finishedItems?.includes(b)).length===0);
     return(
+        <div>
+               <div className=" flex justify-between shadow-lg font-bold  p-2">
+                <Link className=' active:bg-red-500  shadow-md shadow-blue-400 py-1 px-4 rounded-md bg-green-300' href='/people'>Table</Link>
+                
+                {session.data?.user ? <button onClick={()=>signOut()} className='active:bg-red-500 shadow-md shadow-green-500 py-1 px-2 text-white rounded-md bg-blue-500' href='/people'>Sign Out</button>:<Link className='m-4 active:bg-red-500 shadow-md shadow-green-500 py-1 px-2 rounded-md bg-green-300' href='/'>Sign in</Link>}
+            </div>
+       
         <div className="w-full h-full p-4 font-bold text-sm">
 
-            <div className="flex justify-between ">
-             <section className="flex flex-col mt-10 gap-1 items-start w-1/2">
-                <h1 className="font-bold text-2xl">{session?.data?.user?.name} <span className="text-green-500">{studentLevel}</span></h1>
-                <h1 className="text-gray-400 text-sm">{session?.data?.user?.email}</h1>
-                <div className=" flex flex-wrap gap-2 w-ful ">
-                    {finishedItems.map((a,i)=><button onClick={(e)=>setFinishedItems(finishedItems.filter(k=>k!==a))} key={i} className=" rounded-sm bg-slate-400 text-[8px] px-2">
+            <div className="mb-4">
+                <h1 className="font-bold text-xl ">{session?.data?.user?.name} <span className="text-green-500 mx-10">{studentLevel} <span className="text-black text-xs">الوحدات المنجزه</span></span></h1>
+                    <h1 className="text-gray-400 text-sm">{session?.data?.user?.email}</h1>
+            </div>
+
+            <div>
+             <section className="flex flex-col mt-2 gap-1 items-start">
+              
+                <div className="grid grid-cols-7 gap-2 w-ful ">
+                    {finishedItems.map((a,i)=><button onClick={(e)=>setFinishedItems(finishedItems.filter(k=>k!==a))} key={i} className=" rounded-sm bg-slate-300/80 text-[9px] px-2">
                         {a}
                     </button>)}
                 </div>
 
-             <Link className='m-4 active:bg-red-500 p-2 rounded-full bg-green-300' href='/people'>Table</Link>
-                
-               {session.data?.user ? <button onClick={()=>signOut()} className='m-4 active:bg-red-500 p-2 text-white rounded-full bg-blue-500' href='/people'>Sign Out</button>:<Link className='m-4 active:bg-red-500 p-2 rounded-full bg-green-300' href='/'>Sign in</Link>}
 
 
              </section>
 
-                <div className="w-1/2 text-[8px] space-y-6 mt-10 p-2">
+                <div className="text-[10px]  mt-10 p-2 grid grid-cols-2 grid-rows-2 gap-4">
 
-                    {stages.map((a,index)=><div key={index} className="flex flex-wrap gap-2">
+                    {stages.map((a,index)=><div key={index} className="grid grid-cols-3 gap-2 text-center p-1 ">
 
                     {a.map(item=>(<div key={item.name} className={clsx(`px-2 rounded-sm ${stagesItemsColors[index]}`,(student.finished.includes(item.name))&& 'opacity-30')} >
 
@@ -69,16 +77,17 @@ const handleUpdate = async()=>{
                          </div>))}
 
                      </div>)}
-                     <div className="flex justify-center">{(!parseInt(oldFinished.length)&&someChangHappend)>0?
-                            <button onClick={()=>handleAdd()} className="border-2 border-green-500 px-2 rounded-se-lg">Add</button>:(someChangHappend &&
-                            <button onClick={()=>handleUpdate()} className="border-2 border-green-500 px-2 rounded-se-lg">Update</button>)
+                </div>
+                     <div className="flex justify-center text-gray-800 mt-4">{(!parseInt(oldFinished.length)&&someChangHappend)>0?
+                            <button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">Add</button>:(someChangHappend &&
+                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">Update</button>)
                             
                             }
                      </div>
-                </div>
 
     
             </div>        
+        </div>
         </div>
     )
 };
