@@ -80,11 +80,11 @@ const handleUpdate = async()=>{
 
                     
                     </div>
-                    <div onClick={()=>setHamburger(false)} className="w-1/5 h-full bg-gradient-to-b from-black/80 to-gray-50 flex justify-center overflow-hidden items-center">
+                    <div onClick={()=>setHamburger(false)} className="w-1/5 h-full bg-gradient-to-b from-black/80 to-gray-100 flex justify-center overflow-hidden items-center">
                         <div className="border-2 border-white/80 w-8 h-8 rounded-full animate-ping">
                         <div className="border-4 border-blue-400 w-8 h-8 rounded-full animate-ping">
                         <div className="border-6 border-green-400 w-6 h-6 rounded-full animate-ping">
-                        <div className="border-8 border-yellow-500 w-6 h-6 rounded-full animate-pulse "></div>
+                        <div className="border-8 border-yellow-500/60 w-6 h-6 rounded-full animate-pulse "></div>
                         </div>
                         </div>
                         </div>
