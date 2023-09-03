@@ -8,12 +8,16 @@ import axios from "axios";
 import {useSession ,signOut} from 'next-auth/react'
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import {GiHamburgerMenu} from 'react-icons/gi'
+import {GrLogout} from 'react-icons/gr'
 
 
-export default function Student({oldFinished ,studentLevel, errorFinished}){
+export default function Student({oldFinished ,studentLevel, errorFinished, user}){
  const session = useSession();
  const rout = useRouter();
+ const userAdmin = user?.email;
 const [finishedItems , setFinishedItems] = useState(oldFinished);
+ const [hamburger,setHamburger] = useState(false);
 
 const howManyStages = [1,2,3,4];
 const stagesItemsColors = ['bg-sky-300','bg-rose-300','bg-green-200','bg-orange-200'];
@@ -39,12 +43,33 @@ const handleUpdate = async()=>{
 
     let someChangHappend = !(finishedItems.filter(a=>!oldFinished?.includes(a)).length===0 && oldFinished.filter(b=>!finishedItems?.includes(b)).length===0);
     return(
-        <div>
+        <div className="relative h-full w-full">
+
                <div className=" flex justify-between shadow-lg font-bold  p-2">
+                <GiHamburgerMenu className="text-2xl" onClick={()=>setHamburger(true)}/>
+
                 <Link className=' active:bg-red-500  shadow-md shadow-blue-400 py-1 px-4 rounded-md bg-green-300' href='/people'>Table</Link>
                 
-                {session.data?.user ? <button onClick={()=>signOut()} className='active:bg-red-500 shadow-md shadow-green-500 py-1 px-2 text-white rounded-md bg-blue-500' href='/people'>Sign Out</button>:<Link className='m-4 active:bg-red-500 shadow-md shadow-green-500 py-1 px-2 rounded-md bg-green-300' href='/'>Sign in</Link>}
             </div>
+
+            {hamburger &&   <div className="absolute  z-50 top-0 left-0 flex w-full h-full">
+                    <div className="w-4/5 h-full">
+                        <div className="w-full h-32  bg-blue-400"></div>
+                        <div className="flex pt-20 h-full flex-col gap-4 bg-gray-100">
+                        <Link href='/openItemsPage' className="font-bold px-2 m-2">Open Items</Link>
+                {userAdmin?.includes('admin')&&<Link href='/theTable' className="font-bold px-2 m-2">Create Table</Link>}
+
+                <button onClick={()=>signOut()} className='active:bg-red-500 text-start font-bold  px-2 m-2 ' href='/people'>
+                    <GrLogout className="inline-block text-2xl font-bold pr-2"/>  Sign Out</button>
+                        </div>
+
+                    
+                    </div>
+
+                    <div onClick={()=>setHamburger(false)} className="w-1/5 h-full bg-black/80 "></div>
+               </div>}
+
+
        
         <div className="w-full h-full p-4 font-bold text-sm">
 

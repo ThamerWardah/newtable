@@ -1,9 +1,12 @@
 import Student from '../../components/Student';
 import {finihsed ,finihsedToFixTheError } from '../../actions/finished';
+import currentUser from '../../actions/getStudent';
 import { Items } from '../../components/data';
-import Link from "next/link";
+import { redirect } from 'next/navigation';
 
 const student = async()=>{
+    const user = await currentUser();
+    if(!user){redirect('/')}
     const oldFinished = await finihsed();
     const errorFinished = await finihsedToFixTheError();
     const studentLevel = oldFinished?.reduce((a,b)=>{
@@ -12,11 +15,9 @@ const student = async()=>{
      
         return(
             <section>
-                <div className="bg-black text-white px-4 py-2 shadow-md  shadow-white">
-                <Link href='/openItemsPage' className="font-bold px-2 m-2">Open Items</Link>
-                <Link href='/theTable' className="font-bold px-2 m-2">Create Table</Link>
-            </div>
-                <Student oldFinished={oldFinished} studentLevel={studentLevel} errorFinished={errorFinished}/>
+             
+                <Student oldFinished={oldFinished} studentLevel={studentLevel} errorFinished={errorFinished} user={user}/>
+
             </section>
         )
 };

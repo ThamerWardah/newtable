@@ -3,16 +3,21 @@ import {useState} from 'react'
 import { Items2 } from './data';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 export default function OpenItemsAndMore({openItems, newOpenedArray, finished }){
+    const router = useRouter();
     const [variant , setVariant]=useState(false);
     const [newOpen, setNewOpen] = useState(newOpenedArray);
 
     const handleAdd = ()=>{
         axios.post('/api/newOpen',newOpen).then((callback)=>{
-            if(!callback?.error){toast.success('New items have been opened');
+            if(!callback?.error){   
+                                toast.success('New items have been opened');
+                                router.refresh();
+                    };
             if(callback?.error){toast.error('Some thing wrong happend did not add ')}
-            }
+            
         })
         setVariant(false)
     }
