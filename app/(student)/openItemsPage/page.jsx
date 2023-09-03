@@ -29,7 +29,11 @@ export default async function openPage(){
     //=========================================================================================
     return(
         <div>
-            <Link className="px-4 font-bold border-2 mx-4 py-1 mt-2 shadow-md active:bg-green-400" href='/student'>رجوع</Link>
+          <div className="p-4 shadow-sm">
+
+             <Link className="px-4 font-bold border-2 mx-4 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
+
+          </div>
             <OpenItemsAndMore openItems={openItemsNames} newOpenedArray={newOpenedArray} finished={finihsedItems}/>
         </div>
     )
