@@ -14,6 +14,7 @@ const student = async()=>{
             <section>
                 <div className="bg-black text-white px-4 py-2 shadow-md  shadow-white">
                 <Link href='/openItemsPage' className="font-bold px-2 m-2">Open Items</Link>
+                <Link href='/theTable' className="font-bold px-2 m-2">Create Table</Link>
             </div>
                 <Student oldFinished={oldFinished} studentLevel={studentLevel} errorFinished={errorFinished}/>
             </section>

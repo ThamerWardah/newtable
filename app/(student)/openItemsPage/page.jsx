@@ -28,7 +28,7 @@ export default async function openPage(){
     //=========================================================================================
     return(
         <div>
-            <OpenItemsAndMore openItems={openItemsNames} newOpenedArray={newOpenedArray}/>
+            <OpenItemsAndMore openItems={openItemsNames} newOpenedArray={newOpenedArray} finished={finihsedItems}/>
         </div>
     )
 }

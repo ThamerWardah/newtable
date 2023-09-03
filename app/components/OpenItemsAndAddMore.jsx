@@ -4,7 +4,7 @@ import { Items2 } from './data';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
-export default function OpenItemsAndMore({openItems, newOpenedArray}){
+export default function OpenItemsAndMore({openItems, newOpenedArray, finished }){
     const [variant , setVariant]=useState(false);
     const [newOpen, setNewOpen] = useState(newOpenedArray);
 
@@ -41,7 +41,7 @@ export default function OpenItemsAndMore({openItems, newOpenedArray}){
 
               <div className='grid grid-cols-7 gap-2'>
 
-                {Items2.map((item,index)=>(!newOpen.includes(item.name) && <button value={item.name} key={index} onClick={(e)=>setNewOpen([...newOpen,e.target.value])} className='bg-slate-300 px-1 font-bold text-sm text-center' >
+                {Items2.map((item,index)=>(!newOpen.includes(item.name) && !finished.includes(item.name) && !openItems.includes(item.name) && <button value={item.name} key={index} onClick={(e)=>setNewOpen([...newOpen,e.target.value])} className='bg-slate-300 px-1 font-bold text-sm text-center' >
 
                     {item.name}
 

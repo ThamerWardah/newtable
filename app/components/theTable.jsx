@@ -4,7 +4,7 @@ import {Items , Items2 , table , lectureTime ,colors} from '../components/data';
 
 
 
-export default  function TheTable({finishedFetch}){
+export default  function TheTable({finishedFetch, data2}){
 
   const student =   {finished:finishedFetch}
   const lectureTimes = lectureTime;
@@ -24,7 +24,7 @@ export default  function TheTable({finishedFetch}){
     const studentWithLevel = {...student,level:Math.ceil(studentLevel/35 +0.005)+1};
 
     const openItems = studentOpenItems(studentWithLevel) ;
-    const openItemsNames = openItems.map(item=>item.name)
+    const openItemsNames = [...openItems.map(item=>item.name),...data2];
 
 
     const newTable = table.map(a=>a.filter(b=>openItemsNames.includes(b.slice(0,4))));
