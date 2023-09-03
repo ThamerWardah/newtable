@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { finihsed , newOpened } from "../../actions/finished";
 import {Items , Items2} from '../../components/data';
 import OpenItemsAndMore from '../../components/OpenItemsAndAddMore';
@@ -28,6 +29,7 @@ export default async function openPage(){
     //=========================================================================================
     return(
         <div>
+            <Link className="px-4 font-bold border-2 mx-4 py-1 mt-2 shadow-md active:bg-green-400" href='/student'>رجوع</Link>
             <OpenItemsAndMore openItems={openItemsNames} newOpenedArray={newOpenedArray} finished={finihsedItems}/>
         </div>
     )

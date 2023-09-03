@@ -62,7 +62,7 @@ const handleUpdate = async()=>{
             {hamburger &&   <div className="absolute bg-gradient-to-b from-black/80 to-gray-100 z-50 top-0 left-0 flex w-full h-full">
                  <div className="w-4/5 h-full">
 
-                     <div className="w-full h-32  bg-blue-400 flex flex-col py-2 px-4 justify-between  text-white font-bold">
+                     <div className="w-full h-32  bg-blue-400 flex flex-col py-2 pl-4 pr-1 justify-between  text-white font-bold">
                         <div ><PiStudentDuotone className="text-6xl shadow-md shadow-blue-600 border-2 border-blue-500 text-black bg-gray-200 rounded-full  p-2"/></div>
                       <div className="mb-4">
 
@@ -70,7 +70,7 @@ const handleUpdate = async()=>{
                             <div className="flex justify-between">
                                <h1 className="text-gray-300  text-sm">{user?.email}</h1>
                                <h1>
-                               <span className="text-gray-100 text-lg mx-10">{studentLevel} : <span className="text-gray-200 text-sm">الوحدات المنجزه</span></span>
+                               <span className="text-gray-100 text-md mx-4">{studentLevel} : <span className="text-gray-200 text-sm">الوحدات المنجزه</span></span>
                                </h1>
                             </div>
                         </div> 

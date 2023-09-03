@@ -23,8 +23,8 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
     }
 
     return(
-        <div className='w-full h-full px-4 py-4 mt-10'>
-            <div dir='rtl' className='m-2 px-1 text-lg'>
+        <div className='w-full h-full px-4 py-4 mt-4'>
+            <div dir='rtl' className='m-2 px-1 text-md'>
                 <h1 className='text font-extrabold'>١-المواد المتاحه للتسجيل  وفق ضوابط القسم.</h1>
             </div>
             <div  className="grid grid-cols-6 gap-2 text-center font-bold ">
@@ -34,10 +34,10 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
               </div>)} 
               </div>
 
-              <div dir='rtl' className='m-2 mt-14 px-1 text-lg'>
+              <div dir='rtl' className='m-2 mt-14 px-1 text-md'>
                 <h1 className='text font-extrabold'>٢-المواد المضافة من قبل الطالب(اضافتها يدويا في حال امكانيه التسجيل عليها وغير موجوده في الحقل ١  )</h1>
             </div>
-              <div className='border-4 p-2  rounded-sm'>
+              <div className='border-4  rounded-sm'>
 
                 <div dir='rtl' className='flex justify-between font-bold'>
                 {!variant?<button className='bg-blue-800 text-white px-2 py-1 rounded-md' onClick={()=>setVariant(true)}>تعديل</button>:<button className='bg-blue-800 text-white px-4 py-1 rounded-md' onClick={()=>{
@@ -47,27 +47,27 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
                {newOpenedArray.length ===0 && <h1 className='flex-1 text-center text-gray-600 '> لم يتم  الاضافة بعد</h1>}
                 </div>
 
-                <div className='text-md relative'>
+                <div className='relative'>
               
-                <div className='px-4 grid grid-cols-7 gap-2'>
-                {newOpenedArray.map((item,index)=>(<div value={item} key={index} className='bg-green-300 mt-8 px-1 font-bold text-sm text-center' >
+                <div className='px-4 pb-4 flex flex-wrap gap-2'>
+                {newOpenedArray.map((item,index)=>(<div value={item} key={index} className='bg-green-200 mt-8 px-1 font-bold text-sm text-center' >
                     {item}
                 </div>))} 
                 </div>
 
-                {variant && <div className='w-full absolute top-0 right-0 rounded-sm bg-white p-10 shadow-lg'>
-              <div className='grid grid-cols-7 gap-2'>
+                {variant && <div className='w-full absolute top-0 right-0 rounded-sm bg-white  shadow-lg'>
+              <div className='grid grid-cols-6 py-4 px-1 gap-2'>
 
                     {newOpen.map((item,index)=>(<button value={item} key={index} onClick={(e)=>{
                         let removeItem = newOpen.filter(b=>b!==(e.target.value))
-                        setNewOpen(removeItem)}} className='bg-green-300 px-1 font-bold text-sm text-center' >
+                        setNewOpen(removeItem)}} className='bg-green-200 px-1 font-bold text-sm text-center' >
 
                         {item}
 
                     </button>))} 
             </div>
 
-              <div className='grid grid-cols-7 gap-2 mt-4'>
+              <div className='grid grid-cols-6 px-1 gap-2 mt-4'>
 
                 {Items2.map((item,index)=>(!newOpen.includes(item.name) && !finished.includes(item.name) && !openItems.includes(item.name) && <button value={item.name} key={index} onClick={(e)=>setNewOpen([...newOpen,e.target.value])} className='bg-slate-300 px-1 font-bold text-sm text-center' >
 
