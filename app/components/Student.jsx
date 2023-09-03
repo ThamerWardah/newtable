@@ -70,10 +70,10 @@ const handleUpdate = async()=>{
 
                            <h1 dir="ltr" className="font-bold text-sm text-start ml-2 ">{user?.name}</h1>
                             <div className="flex justify-between">
-                                <div className="flex justify-between">
-                               <h1 className="text-gray-300 text-xs">{user?.email}</h1>
-                               <h1>
-                               <span className="text-gray-100 text-md mx-4">{studentLevel} : <span className="text-gray-200 text-xs">الوحدات المنجزه</span></span>
+                                <div className="flex justify-between w-full">
+                               <h1 className="text-gray-300 text-xs inline-block">{user?.email}</h1>
+                               <h1 className="inline-block text-end">
+                               <span className="text-gray-100 text-md mx-4 text-end">{studentLevel} : <span className="text-gray-200 text-end text-xs">الوحدات المنجزه</span></span>
                                </h1>
                                </div>
                             </div>

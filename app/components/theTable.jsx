@@ -1,10 +1,10 @@
 'use client'
 import { useState } from "react"
-import {Items , Items2 , table , lectureTime ,colors} from '../components/data';
+import {Items , Items2  , lectureTime ,colors} from '../components/data';
 
 
 
-export default  function TheTable({finishedFetch, data2}){
+export default  function TheTable({finishedFetch, data2 ,table}){
 
   const student =   {finished:finishedFetch}
   const lectureTimes = lectureTime;

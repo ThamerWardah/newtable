@@ -17,6 +17,7 @@ model Student {
   password   String
   department String
   finished   Finished[]
+  Table      Table[]
 }
 
 model Finished {
@@ -25,4 +26,11 @@ model Finished {
   studentId          String   @db.ObjectId
   finished           String
   addManualOpenItems String[]
+}
+
+model Table {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId String  @db.ObjectId
+  table     Json[]
 }

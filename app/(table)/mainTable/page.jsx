@@ -1,8 +1,10 @@
-import {table} from '../../components/data';
+
 import Link from 'next/link';
+import onelineTable from "../../actions/onlineTable";
 
-const MainTable = ()=>{
-
+const MainTable = async()=>{
+    const onlineT2 = await onelineTable();
+    const onlineT = onlineT2?.table
     return(
         <main className='w-full h-full'>
             <div className="p-4 shadow-sm ">
@@ -10,7 +12,7 @@ const MainTable = ()=>{
             </div>
 
         <div className='py-10 px-2 grid grid-cols-6 grid-rows-5 text-xs font-bold'>
-            { table.map((hour,index)=><div key={index} className='border-2 border-black py-2 px-1 bg-white' >
+            { onlineT.map((hour,index)=><div key={index} className='border-2 border-black py-2 px-1 bg-white' >
 
                     {hour.map((item,i)=><div key={i+100} className='flex flex-col gap-1'>
                         {item}
