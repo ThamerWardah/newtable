@@ -23,16 +23,39 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
     }
 
     return(
-        <div>
-
-            <div  className=" flex flex-wrap gap-4">
-            {openItems.map((a,index)=> <div key={index} className="border-2 border-black p-2 ">  
+        <div className='w-full h-full px-4 py-4 mt-10'>
+            <div dir='rtl' className='m-2 px-1 text-lg'>
+                <h1 className='text font-extrabold'>١-المواد المتاحه للتسجيل  وفق ضوابط القسم.</h1>
+            </div>
+            <div  className="grid grid-cols-6 gap-2 text-center font-bold ">
+            {openItems.map((a,index)=> <div key={index} className="bg-slate-300 px-2 rounded-sm text-xs py-1">  
                     {a}    
                 
-              </div>)} <div className='bg-blue-400 p-2 rounded-sm'><button onClick={()=>setVariant(true)}>Add</button></div>
+              </div>)} 
               </div>
 
-           {variant && <div>
+              <div dir='rtl' className='m-2 mt-14 px-1 text-lg'>
+                <h1 className='text font-extrabold'>٢-المواد المضافة من قبل الطالب(اضافتها يدويا في حال امكانيه التسجيل عليها وغير موجوده في الحقل ١  )</h1>
+            </div>
+              <div className='border-4 p-2  rounded-sm'>
+
+                <div dir='rtl' className='flex justify-between font-bold'>
+                {!variant?<button className='bg-blue-800 text-white px-2 py-1 rounded-md' onClick={()=>setVariant(true)}>تعديل</button>:<button className='bg-blue-800 text-white px-4 py-1 rounded-md' onClick={()=>{
+                                setVariant(false);
+                                setNewOpen(newOpenedArray);
+                            }}>الغاء</button>}
+               {newOpenedArray.length ===0 && <h1 className='flex-1 text-center text-gray-600 '> لم يتم  الاضافة بعد</h1>}
+                </div>
+
+                <div className='text-md relative'>
+              
+                <div className='px-4 grid grid-cols-7 gap-2'>
+                {newOpenedArray.map((item,index)=>(<div value={item} key={index} className='bg-green-300 mt-8 px-1 font-bold text-sm text-center' >
+                    {item}
+                </div>))} 
+                </div>
+
+                {variant && <div className='w-full absolute top-0 right-0 rounded-sm bg-white p-10 shadow-lg'>
               <div className='grid grid-cols-7 gap-2'>
 
                     {newOpen.map((item,index)=>(<button value={item} key={index} onClick={(e)=>{
@@ -44,7 +67,7 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
                     </button>))} 
             </div>
 
-              <div className='grid grid-cols-7 gap-2'>
+              <div className='grid grid-cols-7 gap-2 mt-4'>
 
                 {Items2.map((item,index)=>(!newOpen.includes(item.name) && !finished.includes(item.name) && !openItems.includes(item.name) && <button value={item.name} key={index} onClick={(e)=>setNewOpen([...newOpen,e.target.value])} className='bg-slate-300 px-1 font-bold text-sm text-center' >
 
@@ -53,9 +76,19 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
                 </button>))} 
               </div>
              
-              <div className='flex justify-center font-bold m-4'><button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/3 rounded-se-xl">Confirm</button></div>
+              <div className='flex justify-center font-bold m-4'><button onClick={()=>{
+                handleAdd();
+                setVariant(false)
+                }} className="outlien-none bg-gradient-to-tr from-green-200 to-blue-200 shadow-md shadow-blue-600 text-lg p-1 w-1/3 rounded-se-xl">تاكيد</button></div>
               </div>}
 
+                </div>
+              </div>
+
+                <div dir='rtl'>
+                    <h1>note about the items</h1>
+                </div>
+          
         </div>
     )
 }

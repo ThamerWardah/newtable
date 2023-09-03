@@ -59,7 +59,7 @@ const handleUpdate = async()=>{
                 
             </div>
 
-            {hamburger &&   <div className="absolute bg-gradient-to-b from-black/70 to-gray-100 z-50 top-0 left-0 flex w-full h-full">
+            {hamburger &&   <div className="absolute bg-gradient-to-b from-black/80 to-gray-100 z-50 top-0 left-0 flex w-full h-full">
                  <div className="w-4/5 h-full">
 
                      <div className="w-full h-32  bg-blue-400 flex flex-col py-2 px-4 justify-between  text-white font-bold">
