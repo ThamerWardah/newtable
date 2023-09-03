@@ -5,15 +5,15 @@ import { useState } from "react";
 import clsx from "clsx";
 import Link from "next/dist/client/link";
 import axios from "axios";
-import {useSession ,signOut} from 'next-auth/react'
+import {signOut} from 'next-auth/react'
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {GrLogout} from 'react-icons/gr'
+import{PiStudentDuotone} from 'react-icons/pi'
 
 
 export default function Student({oldFinished ,studentLevel, errorFinished, user}){
- const session = useSession();
  const rout = useRouter();
  const userAdmin = user?.email;
 const [finishedItems , setFinishedItems] = useState(oldFinished);
@@ -42,6 +42,11 @@ const handleUpdate = async()=>{
 }
 
     let someChangHappend = !(finishedItems.filter(a=>!oldFinished?.includes(a)).length===0 && oldFinished.filter(b=>!finishedItems?.includes(b)).length===0);
+
+
+
+
+
     return(
         <div className="relative h-full w-full">
 
@@ -53,8 +58,18 @@ const handleUpdate = async()=>{
             </div>
 
             {hamburger &&   <div className="absolute  z-50 top-0 left-0 flex w-full h-full">
-                    <div className="w-4/5 h-full">
-                        <div className="w-full h-32  bg-blue-400"></div>
+                 <div className="w-4/5 h-full">
+
+                     <div className="w-full h-32  bg-blue-400 flex flex-col py-2 px-4 justify-between  text-white font-bold">
+                        <div ><PiStudentDuotone className="text-6xl shadow-md shadow-blue-800 border-2 border-blue-600 text-black bg-gray-200 rounded-full  p-2"/></div>
+                      <div className="mb-4">
+                           <h1 className="font-bold text-md ">{user?.name} <span className="text-gray-100 text-lg mx-10">{studentLevel} : <span className="text-gray-200 text-sm">الوحدات المنجزه</span></span></h1>
+                               <h1 className="text-gray-300  text-sm">{user?.email}</h1>
+                        </div> 
+
+                    </div>
+
+
                         <div className="flex pt-20 h-full flex-col gap-4 bg-gray-100">
                         <Link href='/openItemsPage' className="font-bold px-2 m-2">Open Items</Link>
                 {userAdmin?.includes('admin')&&<Link href='/theTable' className="font-bold px-2 m-2">Create Table</Link>}
@@ -72,12 +87,6 @@ const handleUpdate = async()=>{
 
        
         <div className="w-full h-full p-4 font-bold text-sm">
-
-            <div className="mb-4">
-                <h1 className="font-bold text-xl ">{session?.data?.user?.name} <span className="text-green-500 mx-10">{studentLevel} <span className="text-black text-xs">الوحدات المنجزه</span></span></h1>
-                    <h1 className="text-gray-400 text-sm">{session?.data?.user?.email}</h1>
-            </div>
-
             <div>
              <section className="flex flex-col mt-2 gap-1 items-start">
               
