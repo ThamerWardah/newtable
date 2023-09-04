@@ -125,7 +125,7 @@ export default  function TheTable({finishedFetch, data2 ,table}){
                     {!takeItem.includes(item) && !availableCompare.includes(item)&& <button key={index} value={item} onClick={(e)=>{
                             setTakeItem([...takeItem,e.target.value]);
                             setNewToFinish([...newToFinish,e.target.value])
-                            }} className={` outline-none border-s-2 shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm px-1 `}>{item}</button>}
+                            }} className={` outline-none border-s-2 shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm px-1 mb-1 `}>{item}</button>}
                     </>)}
              </div>  
             </div>

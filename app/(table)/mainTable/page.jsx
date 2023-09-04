@@ -1,29 +1,14 @@
-
-import Link from 'next/link';
 import onelineTable from "../../actions/onlineTable";
+import MainTable from '../../components/MainTableCompo'
 
-const MainTable = async()=>{
-    const onlineT2 = await onelineTable();
-    const onlineT = onlineT2?.table
+
+export default async function MainTableFunction(){
+    const onlineT2 = await onelineTable() ;
     return(
-        <main className='w-full h-full'>
-            <div className="p-4 shadow-sm ">
-                <Link className="px-4 font-bold border-2 mx-4 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
-            </div>
 
-        <div className='py-10 px-2 grid grid-cols-6 grid-rows-5 text-[7px] font-bold'>
-            { onlineT.map((hour,index)=><div key={index} className='border-[1px] border-black py-2 px-1 bg-white' >
+        <>
+            <MainTable onlineT2={onlineT2} />
 
-                    {hour.map((item,i)=><div key={i+100} className='flex flex-col gap-1'>
-                        {item}
-                    </div>)}
-
-            </div>) }
-        </div>
-
-
-        </main>
+        </>
     )
-};
-
-export default MainTable;
+}

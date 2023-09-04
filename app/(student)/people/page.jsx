@@ -14,7 +14,7 @@ export default async function Table(){
     return(
         <div>
             
-            <div className="px-4 pt-1 shadow-sm ">
+            <div dir="rtl" className="px-4 pt-1 shadow-sm ">
                 <Link className="px-4 font-bold border-2 mx-4 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
             </div>
             
