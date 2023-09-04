@@ -2,10 +2,11 @@ import Link from "next/link";
 import TheTable from "../../components/theTable";
 import { finihsed ,newOpened } from "../../actions/finished";
 import onelineTable from "../../actions/onlineTable";
+import { getTableNow } from "../../actions/getStudent";
 
 
 export default async function Table(){
-    const onlineT2 = await onelineTable();
+    const onlineT2 = await getTableNow(); // onelineTable()
     const onlineT = onlineT2?.table
     const data = await finihsed();
     const manualOpened = await newOpened();

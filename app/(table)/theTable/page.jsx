@@ -1,9 +1,10 @@
 import onelineTable from "../../actions/onlineTable";
 import Link from "next/link";
 import CreateTable from "../../components/theTableComponent";
+import { getTableNow } from "../../actions/getStudent";
 
 export default async function NewTAble(){
-    const onlineT2 = await onelineTable();
+    const onlineT2 = await getTableNow(); // onelineTable()
     const onlineT = onlineT2?.table
     
     return(

@@ -4,7 +4,7 @@ import { getTableNow } from "../../actions/getStudent";
 
 
 export default async function MainTableFunction(){
-    const onlineT2 = await getTableNow() ;
+    const onlineT2 = await getTableNow() ; //onlineTable()
     return(
 
         <>
