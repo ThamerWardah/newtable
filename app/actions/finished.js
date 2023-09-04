@@ -28,7 +28,19 @@ const finishedId = async()=>{
 
     return finish ;
 };
+const onelineTable2 = async()=>{
+    const user = await currentUser();
+    const table = await prisma.table.findUnique({
+        where:{
+            id:'64f636d0550fee5b24eeca6e'
+        }
+    });
+
+    return table
+
+};
 
 
 
-export  {finihsed , finishedId, newOpened, finihsedToFixTheError};
+export  {finihsed , finishedId, newOpened, finihsedToFixTheError , onelineTable2 };
+
