@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import {Items , Items2  , lectureTime ,colors} from '../components/data';
+import {Items , Items2  , lectureTime ,colors, itemsInArabic} from '../components/data';
 
 
 
@@ -125,7 +125,7 @@ export default  function TheTable({finishedFetch, data2 ,table}){
                     {!takeItem.includes(item) && !availableCompare.includes(item)&& <button key={index} value={item} onClick={(e)=>{
                             setTakeItem([...takeItem,e.target.value]);
                             setNewToFinish([...newToFinish,e.target.value])
-                            }} className={` outline-none border-s-2 shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm px-1 mb-1 `}>{item}</button>}
+                            }} className={` outline-none border-s-2 shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm px-1 mb-1 `}>{itemsInArabic[item.slice(0,1)]}{item.slice(1)}</button>}
                     </>)}
              </div>  
             </div>
@@ -146,14 +146,15 @@ export default  function TheTable({finishedFetch, data2 ,table}){
                 {numberOfUnit<12 &&<div className="w-12 h-11 absolute top-[6px] bg-red-200 rounded-full animate-ping"></div>}
                 </div>
 
-                <div className="grid grid-rows-5 grid-cols-6">
+                <div dir="rtl" className="grid grid-rows-5 grid-cols-6">
                     {newTable.map((item,index)=><div key={index}>
                         <div className="my-2 text-center">
                             <h1 className="font-bold text-[8px] bg-gray-100">
                                  {lectureTimes[index]}
                             </h1>
                             <h1 className={`text-xs  py-2 font-bold ${newTable[index][secondStep[index]]?color[newTable[index][secondStep[index]]]:"bg-gray-100"}`}>
-                                {newTable[index][secondStep[index]]?newTable[index][secondStep[index]]:<p className="text-red-600">_ _ _  </p>}
+                                {newTable[index][secondStep[index]]?`${itemsInArabic[(newTable[index][secondStep[index]]).slice(0,1)]}${(newTable[index][secondStep[index]]).slice(1)}`:<p className="text-red-600">_ _ _  </p>}
+                               
                             </h1>
                         </div>
 
@@ -165,7 +166,7 @@ export default  function TheTable({finishedFetch, data2 ,table}){
                              
 
             <div className="flex flex-wrap  mt-4 text-sm font-bold gap-2">{takeItem.map((item,index)=><div key={index}>
-            { <button value={item} onClick={(e)=>handleRemove(e.target.value)} className={` border-2 outline-none  ${cat_color[Items[item?.slice(0,4)]?.cat]} shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]} bg-white rounded-md px-1`}>{item}</button>}
+            { <button value={item} onClick={(e)=>handleRemove(e.target.value)} className={` border-2 outline-none  ${cat_color[Items[item?.slice(0,4)]?.cat]} shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]} bg-white rounded-md px-1`}>{itemsInArabic[item.slice(0,1)]}{item.slice(1)}</button>}
             </div>)}</div>
 
         </div>

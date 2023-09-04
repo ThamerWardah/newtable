@@ -1,6 +1,6 @@
 'use client'
 import {useState} from 'react'
-import { Items2 } from './data';
+import { Items2 , itemsInArabic} from './data';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -13,7 +13,7 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
     const handleAdd = ()=>{
         axios.post('/api/newOpen',newOpen).then((callback)=>{
             if(!callback?.error){   
-                                toast.success('New items have been opened');
+                                toast.success('تم التعديل');
                                 router.refresh();
                     };
             if(callback?.error){toast.error('Some thing wrong happend did not add ')}
@@ -29,7 +29,7 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
             </div>
             <div  className="grid grid-cols-6 gap-2 text-center font-bold ">
             {openItems.map((a,index)=> <div key={index} className="bg-slate-300 px-2 rounded-sm text-xs py-1">  
-                    {a}    
+                {itemsInArabic[a.slice(0,1)]}{a.slice(1)}   
                 
               </div>)} 
               </div>
@@ -51,7 +51,7 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
               
                 <div className='px-4 pb-4 flex flex-wrap gap-2'>
                 {newOpenedArray.map((item,index)=>(<div value={item} key={index} className='bg-green-200 mt-8 px-1 font-bold text-sm text-center' >
-                    {item}
+                {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                 </div>))} 
                 </div>
 
@@ -62,7 +62,7 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
                         let removeItem = newOpen.filter(b=>b!==(e.target.value))
                         setNewOpen(removeItem)}} className='bg-green-200 px-1 font-bold text-sm text-center' >
 
-                        {item}
+                              {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
 
                     </button>))} 
             </div>
@@ -71,7 +71,7 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
 
                 {Items2.map((item,index)=>(!newOpen.includes(item.name) && !finished.includes(item.name) && !openItems.includes(item.name) && <button value={item.name} key={index} onClick={(e)=>setNewOpen([...newOpen,e.target.value])} className='bg-slate-300 px-1 font-bold text-sm text-center' >
 
-                    {item.name}
+                {itemsInArabic[(item.name).slice(0,1)]}{(item.name).slice(1)}
 
                 </button>))} 
               </div>

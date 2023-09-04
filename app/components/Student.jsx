@@ -1,6 +1,6 @@
 'use client'
 
-import {Items2} from "./data"
+import {Items2, itemsInArabic} from "./data"
 import { useState } from "react";
 import clsx from "clsx";
 import Link from "next/dist/client/link";
@@ -120,7 +120,7 @@ const handleUpdate = async()=>{
               
                 <div className="grid grid-cols-7 gap-2 w-ful ">
                     {finishedItems.map((a,i)=><button onClick={(e)=>setFinishedItems(finishedItems.filter(k=>k!==a))} key={i} className=" rounded-sm bg-slate-300/80 text-[9px] px-2">
-                        {a}
+                        {itemsInArabic[a.slice(0,1)]}{a.slice(1)}
                     </button>)}
                 </div>
 
@@ -134,7 +134,7 @@ const handleUpdate = async()=>{
 
                     {a.map(item=>(<div key={item.name} className={clsx(`px-2 rounded-sm ${stagesItemsColors[index]}`,(student.finished.includes(item.name))&& 'opacity-30')} >
 
-                       <button disabled={(student.finished.includes(item.name))?true:false} onClick={(e)=>setFinishedItems([...finishedItems,e.target.value])} value={item.name}>{item.name}</button>
+                       <button disabled={(student.finished.includes(item.name))?true:false} onClick={(e)=>setFinishedItems([...finishedItems,e.target.value])} value={item.name}>{itemsInArabic[(item.name).slice(0,1)]}{(item.name).slice(1)}</button>
 
                          </div>))}
 
