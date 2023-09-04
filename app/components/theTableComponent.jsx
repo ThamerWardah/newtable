@@ -12,7 +12,7 @@ const CreateTable = ({onlineT})=>{
     const [itemClicked,setItemClicked]=useState('');
     const table2 = onlineT
     const emptyTable = table2;
-    const groups = [1,2,3,4,5];
+    const groups = ['/',"١"," ٢" ," ٣" , "٤",'ك','ف','ح','ج','ب','ت','ي'];
     const handleAddTable = async()=>{
         const table = emptyTable
         axios.post('/api/createTable',{table}).then(()=>toast.success('done')).catch(()=>toast.error('Faild'));
@@ -89,7 +89,7 @@ const CreateTable = ({onlineT})=>{
                                             <div>{itemClicked}</div>
                                             {groups.map(g=><div key={g}>
                                                     <button
-                                                    onClick={()=>setItemClicked(`${itemClicked}_${g}`)}
+                                                    onClick={()=>setItemClicked(`${itemClicked}${g}`)}
                                                     >{g}</button>
                                             </div>)}
                                             <div ><button         
