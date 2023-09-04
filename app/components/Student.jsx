@@ -31,7 +31,7 @@ const  student =   {finished:finishedItems}
 const handleAdd = async()=>{
     const fn = {finishedArray:student.finished.join('_')}
     axios.post('api/finishedItems',fn).then(()=>{
-        toast.success('Done');
+        toast.success('تم');
         rout.refresh();
     }).catch(()=>toast.error('Something went wrong'));
     
@@ -39,7 +39,7 @@ const handleAdd = async()=>{
 const handleUpdate = async()=>{
     const fn = {finishedArray:student.finished.join('_')}
     axios.post('api/update',fn).then(()=>{
-        toast.success('Done');
+        toast.success('تم تحديث البيانات');
         rout.refresh();
     }).catch(()=>toast.error('Something went wrong'));
     
@@ -142,7 +142,7 @@ const handleUpdate = async()=>{
                 </div>
                      <div className="flex justify-center text-gray-800 mt-4">{(!parseInt(errorFinished.length)>0 && someChangHappend)?
                             <button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">اضافه</button>:(someChangHappend &&
-                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">تحديث البيانات</button>)
+                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl" >تحديث البيانات </button>)
                             
                             }
                      </div>
