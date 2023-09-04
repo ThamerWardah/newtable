@@ -13,4 +13,3 @@ export default async function onelineTable(){
     return table
 };
 
-export const revalidate = 0

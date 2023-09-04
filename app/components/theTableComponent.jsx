@@ -3,7 +3,8 @@ import {Items2, Items, lectureTime} from './data';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { config } from 'process';
+
+
 
 const CreateTable = ({onlineT})=>{
     const [emptyArray,setEmptyArray]=useState([]);
@@ -13,7 +14,7 @@ const CreateTable = ({onlineT})=>{
     const [itemClicked,setItemClicked]=useState('');
     const table2 = onlineT
     const emptyTable = table2;
-    const groups = ['/',"١"," ٢" ," ٣" , "٤",'ك','ف','ح','ج','ب','ت','ي'];
+    const groups = ['/',' 1 ',' 2 ',' 3 ',' 4 ',' 5 ','ك','ف','ح','ج','ب','ت','ي'];
     const handleAddTable = async()=>{
         const table = emptyTable
         axios.post('/api/createTable',{table}).then(()=>toast.success('done')).catch(()=>toast.error('Faild'));
@@ -85,22 +86,29 @@ const CreateTable = ({onlineT})=>{
                                 setSecondOpen(true);
                             }}
                         >{a.name}</button>
-                        {secondOpen && <div className='absolute top-0 right-0 w-full h-full bg-blue-400/20'>
-                                        <div className='m-4'><button onClick={()=>setSecondOpen(false)}>Close</button></div>
-                                        <div className='flex gap-4'>
-                                            <div>{itemClicked}</div>
-                                            {groups.map(g=><div key={g}>
-                                                    <button
-                                                    onClick={()=>setItemClicked(`${itemClicked}${g}`)}
-                                                    >{g}</button>
-                                            </div>)}
-                                            <div ><button         
-                                             value={itemClicked}className='bg-green-600 border-2 border-black p-2'
+                        {secondOpen && <div className='absolute top-0 right-0 w-full h-full bg-blue-500'>
+
+                                    
+                                        <div className='m-4 flex justify-evenly'><button onClick={()=>setSecondOpen(false)} className='bg-red-500 p-1 rounded-md'>Close</button>
+                                        <div ><button         
+                                             value={itemClicked}className='bg-green-400 rounded-md p-1'
                                                 onClick={(e)=>{
                                                     setEmptyArray([...emptyArray,e.target.value]);
                                                     setSecondOpen(false)
                                                 }}
                                             >Add</button></div>
+                                        </div>
+                                        
+                                        <div className='flex flex-col items-center gap-8'>
+                                            <div className='text-lg px-4 py-1 bg-black rounded-sm'>{itemClicked}</div>
+                                            <div className='grid grid-cols-4 grid-rows-3 gap-2'>
+                                            {groups.map(g=><div key={g}
+                                                    className='flex flex-wrap gap-2'>
+                                                    <button className='border-2 rounded-sm px-2 '
+                                                    onClick={()=>setItemClicked(`${itemClicked}${g}`)}
+                                                    >{g}</button>
+                                            </div>)}
+                                          </div>
                                         </div>
 
                                         </div>}
