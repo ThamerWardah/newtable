@@ -14,8 +14,8 @@ export default async function Table(){
     return(
         <div>
             
-            <div className="bg-black text-white px-4 py-2 shadow-md  shadow-white">
-                <Link href='/student' className="font-bold px-2 m-2">Profile</Link>
+            <div className="px-4 pt-1 shadow-sm ">
+                <Link className="px-4 font-bold border-2 mx-4 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
             </div>
             
             <TheTable finishedFetch={data} data2={manualOpened} table={onlineT}/>
