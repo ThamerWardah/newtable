@@ -10,6 +10,6 @@ export default async function onelineTable(){
         }
     });
 
-    return table
+    return table 
 };
 

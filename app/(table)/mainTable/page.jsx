@@ -1,10 +1,10 @@
 import onelineTable from "../../actions/onlineTable";
 import MainTable from '../../components/MainTableCompo';
-import { onelineTable2 } from "../../actions/finished";
+import { getTableNow } from "../../actions/getStudent";
 
 
 export default async function MainTableFunction(){
-    const onlineT2 = await onelineTable2() ;
+    const onlineT2 = await getTableNow() ;
     return(
 
         <>
