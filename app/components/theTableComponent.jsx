@@ -3,6 +3,7 @@ import {Items2, Items, lectureTime} from './data';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { config } from 'process';
 
 const CreateTable = ({onlineT})=>{
     const [emptyArray,setEmptyArray]=useState([]);
@@ -21,6 +22,7 @@ const CreateTable = ({onlineT})=>{
         const table = emptyTable
         axios.post('/api/updateTable',{table}).then(()=>toast.success('Updated')).catch(()=>toast.error('Faild'));
     }
+
 
 
     return(

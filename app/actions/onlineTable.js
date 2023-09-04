@@ -1,6 +1,7 @@
 import prisma from '../Libs/prismad';
+import { cache } from 'react';
 
-
+export const revalidate = 10 
 
 export default async function onelineTable(){
 
