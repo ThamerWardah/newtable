@@ -12,7 +12,7 @@ export default async function openPage(){
     //===========================================
     const Level = (theStudent)=>{
       let sum =0 ;
-      return theStudent.finished.map(item => Items[item]).map(item=>(item).significant).map(item=> sum+= parseInt(item)).pop();
+      return theStudent.finished.map(item => Items[item]).map(item=>(item).significant).map(item=> sum+= parseInt(item)).pop() ||1;
     };
   const studentOpenItems = (studentOpen)=>{
       return Items2.filter(item2=> item2.level<= studentOpen.level && (item2.pre ==='none'|| studentOpen.finished.includes(item2.pre)) && !studentOpen.finished.includes(item2.name)) 
@@ -21,7 +21,7 @@ export default async function openPage(){
   
     const studentLevel = Level(student);
   
-    const studentWithLevel = {...student,level:Math.ceil(parseFloat(studentLevel/35 +0.005))};
+    const studentWithLevel = {...student,level:Math.ceil(parseFloat(studentLevel/35) +0.005)};
   
     const openItems = studentOpenItems(studentWithLevel) ;
     const openItemsNames = openItems.map(item=>item.name);

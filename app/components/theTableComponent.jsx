@@ -14,7 +14,7 @@ const CreateTable = ({onlineT})=>{
     const [itemClicked,setItemClicked]=useState('');
     const table2 = onlineT
     const emptyTable = table2;
-    const groups = ['/',' 1 ',' 2 ',' 3 ',' 4 ',' 5 ','ك','ف','ح','ج','ب','ت','ي'];
+    const groups = ['/',' 1 ',' 2 ',' 3 ',' 4 ',' 5 ','ك','ف','ح','ج','ب','ت','ي' ,'cls','lab'];
     const handleAddTable = async()=>{
         const table = emptyTable
         axios.post('/api/createTable',{table}).then(()=>toast.success('done')).catch(()=>toast.error('Faild'));
@@ -105,7 +105,7 @@ const CreateTable = ({onlineT})=>{
                                             {groups.map(g=><div key={g}
                                                     className='flex flex-wrap gap-2'>
                                                     <button className='border-2 rounded-sm px-2 '
-                                                    onClick={()=>setItemClicked(`${itemClicked}${itemClicked.length>5?g.slice(1,2):g}`)}
+                                                    onClick={()=>setItemClicked(`${itemClicked}${itemClicked.length>5?(['cls','lab'].includes(g)?g:g.slice(1,2)):g}`)}
                                                     >{g}</button>
                                             </div>)}
                                           </div>
