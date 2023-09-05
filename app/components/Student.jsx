@@ -65,7 +65,7 @@ const handleUpdate = async()=>{
                  <div className="w-4/5 h-full">
 
                      <div className="w-full h-32  bg-blue-400 flex flex-col py-2 pl-2 pr-1 justify-between  text-white font-bold">
-                        <div ><PiStudentDuotone className="text-6xl shadow-md shadow-blue-600 border-2 border-blue-500 text-black bg-gray-200 rounded-full ml-2  p-2"/></div>
+                        <div ><PiStudentDuotone className="text-6xl shadow-md shadow-blue-500 border-2  text-black bg-gray-200 rounded-full ml-2  p-2"/></div>
                       <div className="mb-4">
 
                            <h1 dir="ltr" className="font-bold text-sm text-start ml-2 ">{user?.name}</h1>

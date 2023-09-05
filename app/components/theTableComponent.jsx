@@ -105,7 +105,7 @@ const CreateTable = ({onlineT})=>{
                                             {groups.map(g=><div key={g}
                                                     className='flex flex-wrap gap-2'>
                                                     <button className='border-2 rounded-sm px-2 '
-                                                    onClick={()=>setItemClicked(`${itemClicked}${g}`)}
+                                                    onClick={()=>setItemClicked(`${itemClicked}${itemClicked.length>5?g.slice(1,2):g}`)}
                                                     >{g}</button>
                                             </div>)}
                                           </div>

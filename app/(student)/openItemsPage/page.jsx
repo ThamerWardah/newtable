@@ -21,7 +21,7 @@ export default async function openPage(){
   
     const studentLevel = Level(student);
   
-    const studentWithLevel = {...student,level:Math.ceil(studentLevel/35 +0.005)+1};
+    const studentWithLevel = {...student,level:Math.ceil(parseFloat(studentLevel/35 +0.005))};
   
     const openItems = studentOpenItems(studentWithLevel) ;
     const openItemsNames = openItems.map(item=>item.name);

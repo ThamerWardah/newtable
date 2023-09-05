@@ -21,7 +21,7 @@ export default  function TheTable({finishedFetch, data2 ,table}){
 
 
     const studentLevel = Level(student);
-    const studentWithLevel = {...student,level:Math.ceil(studentLevel/35 +0.005)+1};
+    const studentWithLevel = {...student,level:Math.ceil(parseFloat(studentLevel/35 +0.005))};
 
     const openItems = studentOpenItems(studentWithLevel) ;
     const openItemsNames = [...openItems.map(item=>item.name),...data2];
@@ -120,12 +120,12 @@ export default  function TheTable({finishedFetch, data2 ,table}){
             <div className="flex justify-between gap-1">
               <div className=" w-1/2  h-32 ">
 
-               <div className="grid grid-cols-4  gap-2 text-[8px] font-bold">
+               <div className="grid grid-cols-4  gap-1 text-[8px] font-bold">
                     {available2.map((item,index)=><>
                     {!takeItem.includes(item) && !availableCompare.includes(item)&& <button key={index} value={item} onClick={(e)=>{
                             setTakeItem([...takeItem,e.target.value]);
                             setNewToFinish([...newToFinish,e.target.value])
-                            }} className={` outline-none border-s-2 shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm px-1 mb-1 `}>{itemsInArabic[item.slice(0,1)]}{item.slice(1)}</button>}
+                            }} className={` outline-none border-s-2 shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]}  ${cat_color[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm  mb-1 `}>{itemsInArabic[item.slice(0,1)]}{item.slice(1)}</button>}
                     </>)}
              </div>  
             </div>
