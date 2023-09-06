@@ -16,9 +16,6 @@ export default async function Home(){
           <AddDistributor /> 
       </div>
 
-      <div className="">
-        1+1
-      </div>
     </main>
   )
 };
