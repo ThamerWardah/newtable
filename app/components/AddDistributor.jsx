@@ -22,6 +22,7 @@ const AddDistributor = ()=>{
     const [data ,setData] = useState(initialData);
     const [variant , setVariant] = useState('login');
     const [isLoading , setIsLoading] = useState(false);
+    const [welcom,setWelcom]=useState(false)
 
     useEffect(()=>{
         if(session?.status === 'authenticated'){
@@ -44,6 +45,7 @@ const AddDistributor = ()=>{
         axios.post('/api/register',data).then((callback)=>{
                  if(!callback?.error){
                         toast.success('Done');
+                        setWelcom(true);
                         setData(initialData);
                         router.refresh();
                         signIn('credentials',{...data,redirect:false}); 
@@ -55,14 +57,15 @@ const AddDistributor = ()=>{
 
         if(variant === 'login' ){
             signIn('credentials',{...data,redirect:false}).then((callback)=>{
-                if(!callback?.error){toast.success("Loged in"); router.refresh()};
+                if(!callback?.error){toast.success("Loged in"); setWelcom(true); router.refresh()};
                 if(callback?.error){toast.error(callback.error)};
             }).finally(setIsLoading(false))
         }
     }
 
     return(
-        <div className="w-full h-full rounded-md relative bg-gray-100 z-50 py-6 px-4">
+    <div className="w-full h-full rounded-md relative bg-gray-100 z-50 py-6 px-4">
+        {!welcom && <div>
         <div className="flex py-14">
        
         <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-sm mb-10">
@@ -84,6 +87,8 @@ const AddDistributor = ()=>{
         </div>
 
         <div dir="rtl" className="text-center text-sm font-bold flex gap-4 justify-center  "><h1>{variant === 'signin'?"لدي حساب" : "لا املك حساب"}</h1><button className="underline text-gray-500 " type="button" onClick={()=>toggleVariant()}>{variant === 'signin'?"تسحيل الدخول" : "انشاء حساب "}</button></div>
+        </div> } {welcom && <div className="text-green-600 text-6xl font-bold text-center"> welcom</div>}
+
         </div>
     )
 }
