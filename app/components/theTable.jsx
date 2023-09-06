@@ -88,7 +88,9 @@ export default  function TheTable({finishedFetch, data2 ,table}){
     //==================================
     const numberOfUnits = (one)=>{
         let sum =0 ;
-        return one.map(item => Items[item.slice(0,4)]).map(item=>item.significant).map(item=> sum+= parseInt(item)).pop();
+        const one1=one.filter(a=>!a.includes('lab'));
+        
+        return one1.map(item => Items[item.slice(0,4)]).map(item=>item.significant).map(item=> sum+= parseInt(item)).pop();
       };
       const numberOfUnit = numberOfUnits(takeItem);
 
@@ -174,9 +176,9 @@ export default  function TheTable({finishedFetch, data2 ,table}){
                             <h1 className="font-bold text-[8px] bg-gray-100">
                                  {lectureTimes[index]}
                             </h1>
-                            <h1 className={`text-xs  py-2 font-bold ${newTable[index][secondStep[index]]?color[newTable[index][secondStep[index]]]:"bg-gray-100"}`}>
+                            <h1 className={`text-[9px]  py-2 font-bold ${newTable[index][secondStep[index]]?color[newTable[index][secondStep[index]]]:"bg-gray-100"}`}>
                                 {newTable[index][secondStep[index]]?`${itemsInArabic[(newTable[index][secondStep[index]]).slice(0,1)]}
-                                  ${(newTable[index][secondStep[index]]).includes('cls')||(newTable[index][secondStep[index]]).includes('lab')? ((newTable[index][secondStep[index]]).includes('cls')?`${(newTable[index][secondStep[index]]).slice(1,-3)}(${'نضري'})`:`${(newTable[index][secondStep[index]]).slice(1,-3)}(${'عملي'})`):(newTable[index][secondStep[index]]).slice(1)} `:<p className="text-red-600">_ _ _  </p>}
+                                  ${(newTable[index][secondStep[index]]).includes('cls')||(newTable[index][secondStep[index]]).includes('lab')? ((newTable[index][secondStep[index]]).includes('cls')?`${(newTable[index][secondStep[index]]).slice(1,4)}(${'نضري'})`:`${(newTable[index][secondStep[index]]).slice(1,4)}(${'عملي'})`):(newTable[index][secondStep[index]]).slice(1)} `:<p className="text-red-600">_ _ _  </p>}
                                
                             </h1>
                         </div>
@@ -188,7 +190,7 @@ export default  function TheTable({finishedFetch, data2 ,table}){
             </div>
                              
 
-            <div className="flex flex-wrap  mt-4 text-sm font-bold gap-2">{takeItem.map((item,index)=><div key={index}>
+            <div className="flex flex-wrap  mt-4 text-xs font-bold gap-2">{takeItem.map((item,index)=><div key={index}>
             { <button value={item} onClick={(e)=>handleRemove(e.target.value)} className={` border-2 outline-none  ${cat_color[Items[item?.slice(0,4)]?.cat]} shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]} bg-white rounded-md px-1`}>
               
               {itemsInArabic[item.slice(0,1)]}{(item.includes('cls')||item.includes('lab')?(item.includes('cls')?`${item.slice(1,-3)}(${'نضري'})`:`${item.slice(1,-3)}(${'عملي'})`):item.slice(1))}

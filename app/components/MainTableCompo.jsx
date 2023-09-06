@@ -45,11 +45,11 @@ const MainTable = ({onlineT2})=>{
 
                     <div className={clsx(`w-11/12  border-2 border-black`,iFocus &&'text-gray-300')}>
 
-                        <div className='grid grid-cols-6 grid-rows-5 text-[9px] font-bold'>
+                        <div className='grid grid-cols-6 grid-rows-5 text-[8px] font-bold'>
                             { onlineT.map((hour,index)=><div key={index} className='border-[1px] border-black py-2 px-1 bg-white' >
 
-                                    {hour.map((item,i)=><div key={i+100} className='flex flex-col gap-1'>
-                                        {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
+                                    {hour.map((item,i)=><div key={i+100} className='flex flex-col gap-2'>
+                                        {itemsInArabic[item.slice(0,1)]}{(item.includes('cls')||item.includes('lab')?(item.includes('cls')?`${item.slice(1,-3)}(${'نضري'})`:`${item.slice(1,-3)}(${'عملي'})`):item.slice(1))}
                                     </div>)}
 
                             </div>) }
