@@ -1,9 +1,13 @@
 import onelineTable from "../../actions/onlineTable";
 import Link from "next/link";
 import CreateTable from "../../components/theTableComponent";
-import { getTableNow } from "../../actions/getStudent";
+import { getTableNow , currentUser} from "../../actions/getStudent";
+import { redirect } from 'next/navigation'; 
 
 export default async function NewTAble(){
+    const user = await currentUser();
+    if(!user){redirect('/')}
+    
     const onlineT2 = await getTableNow(); // onelineTable()
     const onlineT = onlineT2?.table
     

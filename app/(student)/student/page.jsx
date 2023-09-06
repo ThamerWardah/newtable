@@ -2,7 +2,7 @@ import Student from '../../components/Student';
 import {finihsed ,finihsedToFixTheError } from '../../actions/finished';
 import {currentUser} from '../../actions/getStudent';
 import { Items } from '../../components/data';
-import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation'; 
 
 const student = async()=>{
     const user = await currentUser();

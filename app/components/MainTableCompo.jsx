@@ -17,9 +17,9 @@ const MainTable = ({onlineT2})=>{
             </div>
 
 
-            <div className='w-full px-1 '>
+            <div className='w-full px-[2px] '>
 
-                <div className='w-full flex justify-between border-2 border-black  h-8'>
+                <div className='w-full flex justify-between border-2 border-b-0 border-black  h-8 bg-blue-200/70'>
 
                     <div className='w-1/12 text-center'>
                         <button className='text-xs font-bold bg-black rounded-md shadow-sm p-1 text-white' onClick={()=>setIFocus(pre=>!pre)}>تركيز</button>
@@ -34,19 +34,19 @@ const MainTable = ({onlineT2})=>{
                     </div>
 
                 </div>
-                <div className='w-full flex justify-between border-2 border-black '>
+                <div className='w-full flex justify-between border-2 border-black border-2 bg-blue-200/70'>
 
-                    <div className='w-1/12  grid grid-cols-1 gird-rows-5 justify-center items-center'>
+                    <div className='w-[5%]  grid grid-cols-1 gird-rows-5 justify-center items-center border-l-2 border-black'>
                         {days.map(day=><div key={day}
                             className='text-center text-sm font-bold rotate-[-90deg]'>
                             {day}
                         </div>)}
                     </div>
 
-                    <div className={clsx(`w-11/12  border-2 border-black`,iFocus &&'text-gray-300')}>
+                    <div className={clsx(`w-[95%] `,iFocus &&'text-gray-300')}>
 
                         <div className='grid grid-cols-6 grid-rows-5 text-[8px] font-bold'>
-                            { onlineT.map((hour,index)=><div key={index} className='border-[1px] border-black py-2 px-1 bg-white' >
+                            { onlineT.map((hour,index)=><div key={index} className='border-[1px] border-r-0 border-t-0 border-black py-2 pr-[2px] bg-white' >
 
                                     {hour.map((item,i)=><div key={i+100} className='flex flex-col gap-2'>
                                         {itemsInArabic[item.slice(0,1)]}{(item.includes('cls')||item.includes('lab')?(item.includes('cls')?`${item.slice(1,-3)}(${'نضري'})`:`${item.slice(1,-3)}(${'عملي'})`):item.slice(1))}
