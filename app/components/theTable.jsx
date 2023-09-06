@@ -94,9 +94,18 @@ export default  function TheTable({finishedFetch, data2 ,table}){
       };
       const numberOfUnit = numberOfUnits(takeItem);
 
+      
+      const availableColor2 = available.map(item=>item.slice(0,4))
+      var availableColor = [];
+      for (let i = 0; i < availableColor2.length; i++) {
+        if(!availableColor.includes(availableColor2[i]))
+        availableColor  = [...availableColor,availableColor2[i]];
+        
+      }
+
       const color= {} 
-      for (let k = 0; k < available.length; k++) {
-        color[available[k]]=colors[k]
+      for (let k = 0; k < availableColor.length; k++) {
+        color[availableColor[k]]=colors[k]
       }
 
 //======== Cat items ======
@@ -122,8 +131,6 @@ export default  function TheTable({finishedFetch, data2 ,table}){
 
     return (
         <div className="w-full h-full px-2 py-4 ">
-
-               
 
             <div className="flex justify-between gap-1">
               <div className=" w-1/2  h-32 ">
@@ -176,7 +183,7 @@ export default  function TheTable({finishedFetch, data2 ,table}){
                             <h1 className="font-bold text-[8px] bg-gray-100">
                                  {lectureTimes[index]}
                             </h1>
-                            <h1 className={`text-[9px]  py-2 font-bold ${newTable[index][secondStep[index]]?color[newTable[index][secondStep[index]]]:"bg-gray-100"}`}>
+                            <h1 className={`text-[9px]  py-2 font-bold ${newTable[index][secondStep[index]]?color[newTable[index][secondStep[index]].slice(0,4)]:"bg-gray-100"}`}>
                                 {newTable[index][secondStep[index]]?`${itemsInArabic[(newTable[index][secondStep[index]]).slice(0,1)]}
                                   ${(newTable[index][secondStep[index]]).includes('cls')||(newTable[index][secondStep[index]]).includes('lab')? ((newTable[index][secondStep[index]]).includes('cls')?`${(newTable[index][secondStep[index]]).slice(1,4)}(${'نضري'})`:`${(newTable[index][secondStep[index]]).slice(1,4)}(${'عملي'})`):(newTable[index][secondStep[index]]).slice(1)} `:<p className="text-red-600">_ _ _  </p>}
                                
