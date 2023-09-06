@@ -62,8 +62,8 @@ const AddDistributor = ()=>{
     }
 
     return(
-        <div className="w-full h-full">
-        <div className="flex mt-8">
+        <div className="w-full h-full  relative bg-gray-100 z-50 py-6 px-4">
+        <div className="flex py-14">
        
         <form onSubmit={handleSubmit} className="flex flex-col gap-6 text-sm mb-10">
 
@@ -83,7 +83,7 @@ const AddDistributor = ()=>{
                 </form>
         </div>
 
-        <div dir="rtl" className="text-center flex gap-4 justify-center  "><h1>{variant === 'signin'?"لدي حساب" : "لا املك حساب"}</h1><button className="underline text-gray-500 " type="button" onClick={()=>toggleVariant()}>{variant === 'signin'?"تسحيل الدخول" : "انشاء حساب "}</button></div>
+        <div dir="rtl" className="text-center text-xs font-bold flex gap-4 justify-center  "><h1>{variant === 'signin'?"لدي حساب" : "لا املك حساب"}</h1><button className="underline text-gray-500 " type="button" onClick={()=>toggleVariant()}>{variant === 'signin'?"تسحيل الدخول" : "انشاء حساب "}</button></div>
         </div>
     )
 }
