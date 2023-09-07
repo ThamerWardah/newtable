@@ -5,10 +5,11 @@ import { getTableNow } from "../../actions/getStudent";
 
 export default async function MainTableFunction(){
     const onlineT2 = await getTableNow() ; //onlineTable()
+    const onlineFainal = onlineT2?.fainal
     return(
 
         <>
-            <MainTable onlineT2={onlineT2} />
+            <MainTable onlineT2={onlineT2} onlineFainal={onlineFainal} />
 
         </>
     )
