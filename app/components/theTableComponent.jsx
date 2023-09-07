@@ -14,7 +14,8 @@ const CreateTable = ({onlineT})=>{
     const [itemClicked,setItemClicked]=useState('');
     const table2 = onlineT
     const emptyTable = table2;
-    const groups = ['/',' 1 ',' 2 ',' 3 ',' 4 ',' 5 ','ك','ف','ح','ج','ب','ت','ي' ,'cls','lab'];
+    const allWeekDays = ["الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس",];
+    const groups = ['/','1 ','2 ','3 ','4 ','5 ','ك','ف','ح','ج','ب','ت','ي' ,'cls','lab'];
     const handleAddTable = async()=>{
         const table = emptyTable
         axios.post('/api/createTable',{table}).then(()=>toast.success('done')).catch(()=>toast.error('Faild'));
@@ -38,6 +39,7 @@ const CreateTable = ({onlineT})=>{
                 onClick={(e)=>{
                     setFirstOpen(true);
                     setTimeIndex(index);
+                    setEmptyArray(table2[index])
                 }
                 }
                >{item.map((c,f)=><h3 key={f*4+5002} className='flex flex-col '>
@@ -50,31 +52,33 @@ const CreateTable = ({onlineT})=>{
 
 
 
-               { firstOpen && <div className='p-4 bg-black/70 text-white w-full h-full absolute text-2xl font-bold top-0 right-0'>
+               { firstOpen && <div className='p-4 bg-black text-white w-full h-full absolute text-2xl font-bold top-0 right-0'>
 
-                <div><button onClick={()=>{
-                                        setFirstOpen(false);
-                                        setEmptyArray([]);
-                                        
-                                        }} className='p-2 bg-blue-700'>Close</button></div>
+              <div className='px-4 flex justify-between'>
+                        <div><button onClick={()=>{
+                                                setFirstOpen(false);
+                                                setEmptyArray([]);
+                                                
+                                                }} className='p-2 bg-blue-700'>Close</button></div>
 
-                <div><button onClick={()=>{
-                            setFirstOpen(false);
-                            emptyTable[timeIndex]=emptyArray;
-                            setEmptyArray([]);
-                            }} className='p-2 bg-green-700'>Done</button></div>
+                        <div><button onClick={()=>{
+                                    setFirstOpen(false);
+                                    emptyTable[timeIndex]=emptyArray;
+                                    setEmptyArray([]);
+                                    }} className='p-2 bg-green-700'>Done</button></div>
+                </div>
 
-                    <h1>{timeIndex}</h1>
+                    <h1>{allWeekDays[parseInt(timeIndex)]}</h1>
 
                     <div className='text-md'>   
                         <div>
                             <h1>{lectureTime[timeIndex]}</h1>
                             <h1></h1>
                         </div>
-                        <div className='h-40 flex flex-col text-xs gap-1'>
-                            {emptyArray.map((b,j)=><div key={j}>
+                        <div className='h-40 flex flex-col text-xs gap-1 border-2 border-green-300 flex-wrap mx-2'>
+                            {emptyArray.map((b,j)=><button value={b} key={j} onClick={()=>setEmptyArray([...emptyArray.filter(r=>r !== e.target.value)])} className='border-2 border-red-300 px-2 rounded-sm w-fit' >
                                 {b}
-                                </div>)}
+                                </button>)}
                         </div>
                     </div>
 
