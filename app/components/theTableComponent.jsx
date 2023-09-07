@@ -52,7 +52,7 @@ const CreateTable = ({onlineT})=>{
 
 
 
-               { firstOpen && <div className='p-4 bg-black text-white w-full h-full absolute text-2xl font-bold top-0 right-0'>
+               { firstOpen && <div className='p-4 bg-black text-white w-full h-full absolute text-xl font-bold top-0 right-0'>
 
               <div className='px-4 flex justify-between'>
                         <div><button onClick={()=>{
@@ -68,15 +68,14 @@ const CreateTable = ({onlineT})=>{
                                     }} className='p-2 bg-green-700'>Done</button></div>
                 </div>
 
-                    <h1>{allWeekDays[parseInt(timeIndex)]}</h1>
+
+                    <h1 className='text-center'>{allWeekDays[timeIndex]}</h1>
+                    <h1 className='text-center'>{lectureTime[timeIndex]}</h1>
 
                     <div className='text-md'>   
-                        <div>
-                            <h1>{lectureTime[timeIndex]}</h1>
-                            <h1></h1>
-                        </div>
+                        
                         <div className='h-40 flex flex-col text-xs gap-1 border-2 border-green-300 flex-wrap mx-2'>
-                            {emptyArray.map((b,j)=><button value={b} key={j} onClick={()=>setEmptyArray([...emptyArray.filter(r=>r !== e.target.value)])} className='border-2 border-red-300 px-2 rounded-sm w-fit' >
+                            {emptyArray.map((b,j)=><button value={b} key={j} onClick={(e)=>setEmptyArray([...emptyArray.filter(r=>r !== e.target.value)])} className='border-2 border-red-300 px-2 rounded-sm w-fit' >
                                 {b}
                                 </button>)}
                         </div>
