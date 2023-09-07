@@ -1,7 +1,6 @@
 import Link from "next/link";
 import TheTable from "../../components/theTable";
 import { finihsed ,newOpened } from "../../actions/finished";
-import onelineTable from "../../actions/onlineTable";
 import { getTableNow } from "../../actions/getStudent";
 
 
@@ -16,7 +15,7 @@ export default async function Table(){
         <div>
             
             <div dir="rtl" className="px-4 pt-1 shadow-sm ">
-                <Link className="px-4 font-bold border-2 mx-4 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
+                <Link className="px-4 font-bold border-2 mx-1 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
             </div>
             
             <TheTable finishedFetch={data} data2={manualOpened} table={onlineT}/>

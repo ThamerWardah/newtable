@@ -13,7 +13,7 @@ const MainTable = ({onlineT2})=>{
         <main dir='rtl' className='w-full h-full '>
 
             <div className="p-4 shadow-sm ">
-                <Link className="px-4 font-bold border-2 mx-4 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
+                <Link className="px-4 font-bold border-2  py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
             </div>
 
 
@@ -21,11 +21,11 @@ const MainTable = ({onlineT2})=>{
 
                 <div className='w-full flex justify-between border-2 border-b-0 border-black  h-8 bg-blue-200/70'>
 
-                    <div className='w-1/12 text-center'>
+                    <div className='w-[5%] text-center'>
                         <button className='text-xs font-bold bg-black rounded-md shadow-sm p-1 text-white' onClick={()=>setIFocus(pre=>!pre)}>تركيز</button>
                     </div>
 
-                    <div className='w-11/12 grid grid-cols-6 grid-rows-1 items-center justify-center'>
+                    <div className='w-[95%] grid grid-cols-6 grid-rows-1 items-center justify-center'>
 
                         {lecTime.map((time,ina)=><div key={ina}
                             className='text-center text-[8px] font-bold'>

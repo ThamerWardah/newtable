@@ -11,6 +11,7 @@ export default  function TheTable({finishedFetch, data2 ,table}){
   const [takeItem,setTakeItem] = useState([]);
   const [newToFinish,setNewToFinish]= useState(student.finished);
   const [lastItemInTakeItem,setLastItemInTakeItem]=useState('')
+  const [beforeAfter,setBeforeAfter]=useState('')
   
   const Level = (theStudent)=>{
       let sum =0 ;
@@ -46,9 +47,15 @@ export default  function TheTable({finishedFetch, data2 ,table}){
 
    
     const handleRemove = (e)=>{
-      const remove = takeItem.filter(item=> e.includes('cls')?item.slice(0,4)!==e.slice(0,4):item!==e);
-      if(e.includes('lab')){setLastItemInTakeItem(e.slice(0,4)+'cls')}
-      if(e.includes('cls')){setLastItemInTakeItem('')}
+      let remove = [];
+
+      if((e.includes('lab')&&e.slice(0,4)!==lastItemInTakeItem.slice(0,4))||(e.includes('cls')&&e!==lastItemInTakeItem)){ remove=[...takeItem.filter(a=>a.slice(0,4)!==e.slice(0,4))]; }else{
+         remove = [...takeItem.filter(item=> e.includes('cls')?item.slice(0,4)!==e.slice(0,4):item!==e)];
+        if(e.includes('lab')){setLastItemInTakeItem(e.slice(0,4)+'cls')}
+        if(e.includes('cls')){setLastItemInTakeItem('')}
+      };
+      if(e.includes('cls') && beforeAfter.includes('lab')){setLastItemInTakeItem('')};
+      setBeforeAfter(e);
       setTakeItem(remove);
       setNewToFinish([...finishedFetch,...remove])
     }
