@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/dist/client/link";
 import axios from "axios";
-import {signOut } from 'next-auth/react'
+import {signOut ,useSession} from 'next-auth/react'
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -19,13 +19,14 @@ import {HiMiniPencilSquare} from 'react-icons/hi2';
 
 export default function Student({oldFinished ,studentLevel, errorFinished, user}){
  const rout = useRouter();
+ const session = useSession();
+ useEffect(()=>{
+     if(session?.status !=='authenticated'){rout.push('/')}
+ },[]);
  const userAdmin = user?.email;
 const [finishedItems , setFinishedItems] = useState(oldFinished);
  const [hamburger,setHamburger] = useState(false);
 
- useEffect(()=>{
-     if(!user?.email){rout.push('/')}
- },[])
 
 const howManyStages = [1,2,3,4];
 const stagesItemsColors = ['bg-sky-300','bg-rose-300','bg-green-200','bg-orange-200'];
