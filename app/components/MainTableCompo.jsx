@@ -70,34 +70,34 @@ const MainTable = ({onlineT2,onlineFainal})=>{
                             <div className='grid grid-cols-5 bg-red-300'>
                                 <div className='text-center border-r-2 border-b-2 border-black'>
                                 <div className='text-center'>
-                        <button className='text-xs font-bold bg-black rounded-sm shadow-sm px-2 text-white' onClick={()=>setFainalFocus(pre=>!pre)}>تركيز</button>
+                        <button className='text-xs font-bold bg-black rounded-sm shadow-sm px-2 py-1 text-white' onClick={()=>setFainalFocus(pre=>!pre)}>تركيز</button>
                     </div>
                                 </div>
-                                <div className='text-center border-r-2 border-b-2 border-black'>المستوى الاول</div>
-                                <div className='text-center border-r-2 border-b-2 border-black'>المستوى الثاني</div>
-                                <div className='text-center border-r-2 border-b-2 border-black'> المستوى الثالث</div>
-                                <div className='text-center border-r-2 border-b-2 border-black'>المستوى الرابع</div>
+                                <div className='text-center border-r-2 border-b-2 py-1 border-black'>المستوى الاول</div>
+                                <div className='text-center border-r-2 border-b-2 py-1 border-black'>المستوى الثاني</div>
+                                <div className='text-center border-r-2 border-b-2 py-1 border-black'> المستوى الثالث</div>
+                                <div className='text-center border-r-2 border-b-2 py-1 border-black'>المستوى الرابع</div>
                             
                             </div>
                 {onlineFainal.map((day,dayNumber)=><div key={dayNumber}
-                className={clsx(`grid grid-cols-5 border-b-2 border-black`,dayNumber%2===0&&'bg-slate-300',dayNumber%2!==0&&'bg-rose-300',fainalFocus&&'text-gray-400')} > <div className="flex flex-col gap-1  border-r-2 border-black justify-center items-center bg-red-300 text-black text-md font-extrabold">اليوم {dayNumber+1}</div>
+                className={clsx(`grid grid-cols-5 border-b-2 border-black`,dayNumber%2===0&&'bg-slate-300',dayNumber%2!==0&&'bg-green-200',fainalFocus&&'text-gray-400')} > <div className="flex flex-col gap-1  border-r-2 border-black justify-center items-center bg-red-300 text-black text-md font-extrabold">اليوم {dayNumber+1}</div>
                         <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='1'&&<div key={index}>
-                            {item}
+                        {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
                         </div>
                         <div className="flex flex-col gap-1 border-r-2 border-black justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='2'&&<div key={index}>
-                            {item}
+                        {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
                         </div>
                         <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='3'&&<div key={index}>
-                            {item}
+                        {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
                         </div>
                         <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='4'&&<div key={index}>
-                            {item}
+                        {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
                         </div>
