@@ -202,4 +202,5 @@ const lectureTimeDay = ['9:30-8:30','10:30-9:30','11:30-10:30','12:30-11:30','1:
 
 const weekDays = ["الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس",];
 
-  export {Items , Items2, table2, lectureTime , colors, weekDays ,lectureTimeDay, itemsInArabic}
+const examDays = ["الأول" , "الثاني" , "الثالث", "الرابع" ,"الخامس",  "السادس"  , "السابع" , "الثامن" ,  "التاسع" ,  "العاشر" , " الحادي عشر ",  " الثاني عشر"  , " الثالث عشر" , " الرابع عشر",  "الخامس عشر" , "السادس عشر"]
+  export {Items , Items2, table2, lectureTime , colors, weekDays ,lectureTimeDay, itemsInArabic , examDays}

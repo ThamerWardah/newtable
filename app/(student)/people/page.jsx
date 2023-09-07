@@ -6,7 +6,8 @@ import { getTableNow } from "../../actions/getStudent";
 
 export default async function Table(){
     const onlineT2 = await getTableNow(); // onelineTable()
-    const onlineT = onlineT2?.table
+    const onlineT = onlineT2?.table ;
+    const fainalExamT = onlineT2?.fainal ;
     const data = await finihsed();
     const manualOpened = await newOpened();
     
@@ -18,7 +19,7 @@ export default async function Table(){
                 <Link className="px-4 font-bold border-2 mx-1 py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
             </div>
             
-            <TheTable finishedFetch={data} data2={manualOpened} table={onlineT}/>
+            <TheTable finishedFetch={data} data2={manualOpened} table={onlineT} fainalExamT={fainalExamT}/>
 
         </div>
     ) 

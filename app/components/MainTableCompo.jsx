@@ -12,14 +12,14 @@ const MainTable = ({onlineT2,onlineFainal})=>{
     const onlineT = onlineT2?.table
     return(
         <main dir='rtl' className=' h-full '>
-
+            
             <div className="p-4 shadow-sm ">
                 <Link className="px-4 font-bold border-2  py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
             </div>
 
 
             <div className='w-full px-[2px] '>
-
+            <h1 className='text-center font-bold text-md'>جدول المحاظرات</h1>
                 <div className='w-full flex justify-between border-2 border-b-0 border-black  h-8 bg-blue-200/70'>
 
                     <div className='w-[5%] text-center'>
@@ -65,7 +65,7 @@ const MainTable = ({onlineT2,onlineFainal})=>{
 
 
                            <div className='py-20 px-1 font-bold'>
-                            
+                            <h1 className='text-center  text-md'>جدول الامتحانات النهائيه</h1>
                            <div className="border-2 border-black text-xs">
                             <div className='grid grid-cols-5 bg-red-300'>
                                 <div className='text-center border-r-2 border-b-2 border-black'>
@@ -81,7 +81,7 @@ const MainTable = ({onlineT2,onlineFainal})=>{
                             </div>
                 {onlineFainal.map((day,dayNumber)=><div key={dayNumber}
                 className={clsx(`grid grid-cols-5 border-b-2 border-black`,dayNumber%2===0&&'bg-slate-300',dayNumber%2!==0&&'bg-green-200',fainalFocus&&'text-gray-400')} > <div className="flex flex-col gap-1  border-r-2 border-black justify-center items-center bg-red-300 text-black text-md font-extrabold">اليوم {dayNumber+1}</div>
-                        <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='1'&&<div key={index}>
+                        <div className="flex flex-col gap-1 border-r-2 border-black py-2 justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='1'&&<div key={index}>
                         {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 

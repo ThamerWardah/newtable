@@ -1,10 +1,10 @@
 'use client'
 import { useState } from "react"
-import {Items , Items2  , lectureTime ,colors, itemsInArabic} from '../components/data';
+import {Items , Items2  , lectureTime ,colors, itemsInArabic ,examDays} from '../components/data';
 
 
 
-export default  function TheTable({finishedFetch, data2 ,table}){
+export default  function TheTable({finishedFetch, data2 ,table,fainalExamT}){
 
   const student =   {finished:finishedFetch}
   const lectureTimes = lectureTime;
@@ -134,7 +134,8 @@ export default  function TheTable({finishedFetch, data2 ,table}){
        const cat_color = {DM:'border-red-500/80',DO:'border-green-400/80',UM:'border-yellow-600/80',CM:'border-blue-500/80',CO:'border-black/70'};
        const cat_shadow = {DM:'shadow-red-500/70',DO:'shadow-green-400/80',UM:'shadow-yellow-600/80',CM:'shadow-blue-500/80',CO:'shadow-black/70'}
       
-
+       const takeItemSlice = takeItem.map(item=>item.slice(0,4))
+       const moreThanAExam = fainalExamT.map(day=>day.filter(item=>takeItemSlice.includes(item)));
 
     return (
         <div className="w-full h-full px-2 py-4 ">
@@ -211,7 +212,15 @@ export default  function TheTable({finishedFetch, data2 ,table}){
               
               </button>}
             </div>)}</div>
-
+                              <div dir="rtl" className="px-2 py-6 w-full">
+                                <h1 className="text-xs text-red-600 font-bold">التضاربات في الامتحانات النهائيه</h1>
+                                <ul className=" px-4 list-disc text-xs font-bold"> 
+                                  {moreThanAExam.map((day,index)=>(day.length>1 &&<li key={index} className="w-full">
+                                        اليوم {examDays[index]}
+                                        {day.map(it =><span key={it} className="px-2 text-blue-600 font-bold text-sm">{itemsInArabic[it.slice(0,1)]}{it.slice(1)} </span>)}
+                                  </li>))} 
+                                </ul> 
+                              </div>
         </div>
     )
 
