@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 
 const student = async()=>{
     const user = await currentUser();
-    if(!user){redirect('/')}
+    //if(!user){redirect('/')}
     const oldFinished = await finihsed();
     const errorFinished = await finihsedToFixTheError();
     const studentLevel = oldFinished?.reduce((a,b)=>{
