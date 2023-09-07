@@ -32,4 +32,5 @@ model Table {
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
   table     Json[]
+  fainal    Json[]
 }

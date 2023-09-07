@@ -4,8 +4,8 @@ import prisma from '../../Libs/prismad';
 export async function POST(request){
 
     const body = await request.json();
-    const {table} = body;
-    const Id = '64f636d0550fee5b24eeca6e';
+    const {table,fainal} = body;
+    const Id = '64fa283d2a8b7266319ec4ab';
     
     const tableUpdated = await prisma.table.update({
         where:{
@@ -13,6 +13,7 @@ export async function POST(request){
         },
         data:{
             table:table,
+            fainal:fainal
             }
     });
 

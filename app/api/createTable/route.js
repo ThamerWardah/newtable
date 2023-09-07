@@ -6,12 +6,12 @@ export async function POST(request){
 
 
     const body = await request.json();
-    const {table} = body ;
-
+    const {table ,fainalExam} = body ;
+    const fainalExam2 =[[],[]]
     const onlineTable = await prisma.table.create({
         data:{
             table,
-          
+            fainal:fainalExam2,
         }
     })
 

@@ -11,11 +11,11 @@ async function getTableNow(){
     const session2 = await getServerSession(authOptions);
     const table = await prisma.table.findUnique({
         where:{
-            id:'64f636d0550fee5b24eeca6e' 
+            id:'64fa283d2a8b7266319ec4ab' 
         }
     });
 
-    return table
+    return table 
 }
    
 const  currentUser= async()=>{
