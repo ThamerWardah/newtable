@@ -85,9 +85,6 @@ export default function OpenItemsAndMore({openItems, newOpenedArray, finished })
                 </div>
               </div>
 
-                <div dir='rtl'>
-                    <h1>note about the items</h1>
-                </div>
           
         </div>
     )

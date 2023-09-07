@@ -1,11 +1,11 @@
 'use client'
 
 import {Items2, itemsInArabic} from "./data"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 import Link from "next/dist/client/link";
 import axios from "axios";
-import {signOut ,useSession} from 'next-auth/react'
+import {signOut } from 'next-auth/react'
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -19,10 +19,7 @@ import {HiMiniPencilSquare} from 'react-icons/hi2';
 
 export default function Student({oldFinished ,studentLevel, errorFinished, user}){
  const rout = useRouter();
- const session = useSession();
- useEffect(()=>{
-     if(session?.status !=='authenticated'){rout.push('/')}
- },[]);
+
  const userAdmin = user?.email;
 const [finishedItems , setFinishedItems] = useState(oldFinished);
  const [hamburger,setHamburger] = useState(false);

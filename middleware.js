@@ -8,6 +8,6 @@ export default withAuth({
 
 export const config = {
     matcher: [
-        '/dashboard/','/addUser/','/users/:path*'
+        '/student/','/openItemsPage/','/people/','/mainTable/','/theTable/','/users/:path*'
     ]
 }
