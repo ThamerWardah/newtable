@@ -15,7 +15,7 @@ const CreateTable = ({onlineT})=>{
     const table2 = onlineT
     const emptyTable = table2;
     const allWeekDays = ["الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس",];
-    const groups = ['/','1 ','2 ','3 ','4 ','5 ','ك','ف','ح','ج','ب','ت','ي' ,'cls','lab'];
+    const groups = ['/',' 1 ',' 2 ',' 3 ',' 4 ',' 5 ','ك','ف','ح','ج','ب','ت','ي' ,'cls','lab'];
     const handleAddTable = async()=>{
         const table = emptyTable
         axios.post('/api/createTable',{table}).then(()=>toast.success('done')).catch(()=>toast.error('Faild'));
