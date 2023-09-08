@@ -18,7 +18,7 @@ export default function MyOwnTable({takeItem , myOwnTable2}){
                 <div>
                    
                     {!myOwnTable2?.id && <button onClick={()=>handleAdd()}>Add My Table </button>}
-                   { myOwnTable2?.id && <button onClick={()=>handleAdd()}>Update My Table </button>}
+                   { myOwnTable2?.id && <button onClick={()=>handleUpdate()}>Update My Table </button>}
                 </div>
         </div>
     )
