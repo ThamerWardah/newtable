@@ -241,6 +241,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
                         onStage?setOnStage(false):setOnStage(true);
                         onStage?setTakeItem(myOwnTableT):setTakeItem([]);
                         setLastItemInTakeItem('');
+                        setBeforeAfter('')
                         onStage?setNewToFinish([...student.finished,...myOwnTableT.filter(a=>!a.includes('lab'))]):setNewToFinish(student.finished)
                       }}
                       className="px-4 bg-yellow-400 my-2 rounded-md shadow-md shadow-blue-500 text-sm font-bold"
