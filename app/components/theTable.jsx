@@ -139,6 +139,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
       
        const takeItemSlice = takeItem.map(item=>item.slice(0,4))
        const moreThanAExam = fainalExamT.map(day=>day.filter(item=>takeItemSlice.includes(item)));
+       const moreThanAExamNumber = fainalExamT.map(day=>day.filter(item=>takeItemSlice.includes(item))).filter(c=>c.length>1);
     return (
         <div className="w-full h-full px-2 py-4 ">
            
@@ -215,7 +216,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
               </button>}
             </div>)}</div>
                               <div dir="rtl" className="px-2 py-6 w-full">
-                                <h1 className="text-xs text-red-600 font-bold">التضاربات في الامتحانات النهائيه</h1>
+                                <h1 className="text-xs text-red-600 font-bold">التضاربات في الامتحانات النهائيه :  {moreThanAExamNumber.length>0?moreThanAExamNumber.length:<span className="text-green-500">لا يوجد </span>} </h1>
                                 <ul className=" px-4 list-disc text-xs font-bold"> 
                                   {moreThanAExam.map((day,index)=>(day.length>1 &&<li key={index} className="w-full">
                                         اليوم {examDays[index]}
@@ -240,7 +241,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
                         onStage?setTakeItem(myOwnTableT):setTakeItem([]);
                         onStage?setNewToFinish([...student.finished,...myOwnTableT.filter(a=>!a.includes('lab'))]):setNewToFinish(student.finished)
                       }}
-                      className="px-4 bg-yellow-400 m-2 rounded-md shadow-md shadow-blue-500 text-sm font-bold"
+                      className="px-4 bg-yellow-400 my-2 rounded-md shadow-md shadow-blue-500 text-sm font-bold"
                       >{onStage?'معاينه':'لغاء المعاينه'}</button>
                     </div>
             </div>}
