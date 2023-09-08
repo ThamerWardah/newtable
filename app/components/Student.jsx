@@ -92,7 +92,7 @@ const handleUpdate = async()=>{
 
                         <Link href='/openItemsPage' className="w-fit"><LuBookOpenCheck className="inline-block text-3xl  pr-2"/> المواد المتاحه</Link>
 
-                {userAdmin?.includes('admin')&&<Link href='/theTable' className="w-fit">Create Table</Link>}
+                {userAdmin?.includes('admin9766')&&<Link href='/theTable' className="w-fit">Create Table</Link>}
 
                 <button onClick={()=>signOut()} className='text-start w-fit ' href='/people'>
                 <GrLogout className="inline-block text-2xl  pr-2"/> تسجيل خروج</button>
