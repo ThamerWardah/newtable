@@ -55,10 +55,10 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
       if((e.includes('lab')&&e.slice(0,4)!==lastItemInTakeItem.slice(0,4))||(e.includes('cls')&&e!==lastItemInTakeItem)){ remove=[...takeItem.filter(a=>a.slice(0,4)!==e.slice(0,4))]; }else{
          remove = [...takeItem.filter(item=> e.includes('cls')?item.slice(0,4)!==e.slice(0,4):item!==e)];
         if(e.includes('lab')){setLastItemInTakeItem(e.slice(0,4)+'cls')}
-        if(e.includes('cls')){setLastItemInTakeItem('')}
       };
       if(e.includes('cls') && beforeAfter.includes('lab')){setLastItemInTakeItem('')};
       setBeforeAfter(e);
+      if(e.includes('cls')){setLastItemInTakeItem('')}
       setTakeItem(remove);
       setNewToFinish([...finishedFetch,...remove])
     }
@@ -142,7 +142,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
        const moreThanAExamNumber = fainalExamT.map(day=>day.filter(item=>takeItemSlice.includes(item))).filter(c=>c.length>1);
     return (
         <div className="w-full h-full px-2 py-4 ">
-           
+          
             <div className="flex justify-between gap-1">
               <div className=" w-1/2  h-32 ">
 
