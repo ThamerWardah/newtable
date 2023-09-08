@@ -11,5 +11,5 @@ export default async function myOwnTable(){
         }
     });
 
-    return mytable
+    return mytable || [[]]
 }

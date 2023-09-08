@@ -59,7 +59,7 @@ const handleUpdate = async()=>{
                <div className=" flex justify-between shadow-lg font-bold  p-2">
                 <GiHamburgerMenu className="text-2xl" onClick={()=>setHamburger(true)}/>
 
-                <Link className=' active:bg-red-500  shadow-md shadow-blue-400 py-1 px-2 rounded-md bg-green-300' href='/people'>تسجيل على المواد</Link>
+                <Link className=' active:bg-green-200  shadow-md shadow-blue-300 py-1 px-2 rounded-md bg-green-300' href='/people'>تسجيل على المواد</Link>
                 
             </div>
 
@@ -144,7 +144,7 @@ const handleUpdate = async()=>{
                 </div>
                      <div className="flex justify-center text-gray-800 mt-4">{(!parseInt(errorFinished.length)>0 && someChangHappend)?
                             <button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">اضافه</button>:(someChangHappend &&
-                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl" >تحديث البيانات </button>)
+                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-r from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl" >تحديث البيانات </button>)
                             
                             }
                      </div>
