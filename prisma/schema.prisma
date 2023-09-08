@@ -11,12 +11,13 @@ datasource db {
 }
 
 model Student {
-  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
   name       String
-  email      String     @unique
+  email      String       @unique
   password   String
   department String
   finished   Finished[]
+  MyOwnTable MyOwnTable[]
 }
 
 model Finished {
@@ -25,6 +26,13 @@ model Finished {
   studentId          String   @db.ObjectId
   finished           String
   addManualOpenItems String[]
+}
+
+model MyOwnTable {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  student    Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId  String  @db.ObjectId
+  myOwnTable Json[]
 }
 
 model Table {

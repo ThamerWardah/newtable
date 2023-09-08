@@ -1,10 +1,11 @@
 'use client'
 import { useState } from "react"
 import {Items , Items2  , lectureTime ,colors, itemsInArabic ,examDays} from '../components/data';
+import MyOwnTable from '../components/myOwnTable';
 
 
 
-export default  function TheTable({finishedFetch, data2 ,table,fainalExamT}){
+export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOwnTable}){
 
   const student =   {finished:finishedFetch}
   const lectureTimes = lectureTime;
@@ -139,7 +140,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT}){
 
     return (
         <div className="w-full h-full px-2 py-4 ">
-
+           
             <div className="flex justify-between gap-1">
               <div className=" w-1/2  h-32 ">
 
@@ -221,6 +222,8 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT}){
                                   </li>))} 
                                 </ul> 
                               </div>
+
+                              <MyOwnTable  takeItem={takeItem} myOwnTable2={myOwnTable}/>
         </div>
     )
 

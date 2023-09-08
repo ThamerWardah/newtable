@@ -4,15 +4,15 @@ import Link from 'next/link';
 import { weekDays, lectureTimeDay, itemsInArabic } from './data';
 import clsx from 'clsx';
 
-const MainTable = ({onlineT2,onlineFainal})=>{
+const MainTable = ({onlineT2,onlineFainal,myOwnTable})=>{
     const [iFocus,setIFocus]=useState(false);
     const [fainalFocus,setFainalFocus]=useState(false);
     const days = weekDays;
     const lecTime = lectureTimeDay;
-    const onlineT = onlineT2?.table
+    const onlineT = onlineT2?.table;
+    const myOwnTableSlice = myOwnTable.map(a=>a.slice(0,4));
     return(
         <main dir='rtl' className=' h-full '>
-            
             <div className="p-4 shadow-sm ">
                 <Link className="px-4 font-bold border-2  py-1  shadow-md shadow-blue-500 active:bg-green-400" href='/student'>رجوع</Link>
             </div>
@@ -49,7 +49,7 @@ const MainTable = ({onlineT2,onlineFainal})=>{
                         <div className='grid grid-cols-6 grid-rows-5 text-[8px] font-bold'>
                             { onlineT.map((hour,index)=><div key={index} className='border-[1px] border-r-0 border-t-0 border-black py-2 pr-[2px] bg-white' >
 
-                                    {hour.map((item,i)=><div key={i+100} className='flex flex-col gap-2'>
+                                    {hour.map((item,i)=><div key={i+100} className={clsx(`flex flex-col gap`,myOwnTable.includes(item)&&'text-black')}>
                                         {itemsInArabic[item.slice(0,1)]}{(item.includes('cls')||item.includes('lab')?(item.includes('cls')?`${item.slice(1,-3)}(${'نضري'})`:`${item.slice(1,-3)}(${'عملي'})`):item.slice(1))}
                                     </div>)}
 
@@ -80,23 +80,23 @@ const MainTable = ({onlineT2,onlineFainal})=>{
                             
                             </div>
                 {onlineFainal.map((day,dayNumber)=><div key={dayNumber}
-                className={clsx(`grid grid-cols-5 border-b-2 border-black`,dayNumber%2===0&&'bg-slate-300',dayNumber%2!==0&&'bg-green-200',fainalFocus&&'text-gray-400')} > <div className="flex flex-col gap-1  border-r-2 border-black justify-center items-center bg-red-300 text-black text-md font-extrabold">اليوم {dayNumber+1}</div>
-                        <div className="flex flex-col gap-1 border-r-2 border-black py-2 justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='1'&&<div key={index}>
+                className={clsx(`grid grid-cols-5 border-b-2 border-black`,dayNumber%2===0&&'bg-slate-300',dayNumber%2!==0&&'bg-green-200',fainalFocus&&'text-gray-400/60')} > <div className="flex flex-col gap-1  border-r-2 border-black justify-center items-center bg-red-300 text-black text-md font-extrabold">اليوم {dayNumber+1}</div>
+                        <div className="flex flex-col gap-1 border-r-2 border-black py-2 justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='1'&&<div key={index} className={clsx(myOwnTableSlice.includes(item)&&'text-black')}>
                         {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
                         </div>
-                        <div className="flex flex-col gap-1 border-r-2 border-black justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='2'&&<div key={index}>
+                        <div className="flex flex-col gap-1 border-r-2 border-black justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='2'&&<div key={index} className={clsx(myOwnTableSlice.includes(item)&&'text-black')}>
                         {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
                         </div>
-                        <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='3'&&<div key={index}>
+                        <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='3'&&<div key={index} className={clsx(myOwnTableSlice.includes(item)&&'text-black')}>
                         {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
                         </div>
-                        <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='4'&&<div key={index}>
+                        <div className="flex flex-col gap-1 border-r-2 border-black  justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='4'&&<div key={index} className={clsx(myOwnTableSlice.includes(item)&&'text-black')}>
                         {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}
 
