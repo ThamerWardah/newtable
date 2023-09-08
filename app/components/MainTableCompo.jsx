@@ -10,7 +10,7 @@ const MainTable = ({onlineT2,onlineFainal,myOwnTable})=>{
     const days = weekDays;
     const lecTime = lectureTimeDay;
     const onlineT = onlineT2?.table;
-    const myOwnTableSlice = myOwnTable?.map(a=>a.slice(0,4)) || [];
+    const myOwnTableSlice = myOwnTable?.map(a=>a.slice(0,4)) ;
     return(
         <main dir='rtl' className=' h-full '>
             <div className="p-4 shadow-sm ">

@@ -12,7 +12,7 @@ export default async function Table(){
     const data = await finihsed();
     const manualOpened = await newOpened(); 
     const myTable = await myOwnTable();
-    const myOwnTable2 = myTable[0]
+    const myOwnTable2 = myTable[0] || [];
     
   
     return(

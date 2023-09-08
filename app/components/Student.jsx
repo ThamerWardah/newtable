@@ -143,8 +143,8 @@ const handleUpdate = async()=>{
                      </div>)}
                 </div>
                      <div className="flex justify-center text-gray-800 mt-4">{(!parseInt(errorFinished.length)>0 && someChangHappend)?
-                            <button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-tr from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl">اضافه</button>:(someChangHappend &&
-                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-r from-green-400/60 to-red-500/50 shadow-md shadow-blue-600  p-1 w-1/2 rounded-se-xl" >تحديث البيانات </button>)
+                            <button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-r from-green-400/60 to-yellow-500/60 shadow-md   p-1 w-1/2 rounded-se-xl">اضافه</button>:(someChangHappend &&
+                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-r from-green-400/60 to-yellow-500/60 shadow-md  p-1 w-1/2 rounded-se-xl" >تحديث البيانات </button>)
                             
                             }
                      </div>

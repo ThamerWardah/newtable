@@ -12,7 +12,9 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
   const [takeItem,setTakeItem] = useState([]);
   const [newToFinish,setNewToFinish]= useState(student.finished);
   const [lastItemInTakeItem,setLastItemInTakeItem]=useState('')
-  const [beforeAfter,setBeforeAfter]=useState('')
+  const [beforeAfter,setBeforeAfter]=useState('');
+  const [onStage,setOnStage]=useState(true);
+  const myOwnTableT = myOwnTable?.myOwnTable || [] ;
   
   const Level = (theStudent)=>{
       let sum =0 ;
@@ -224,6 +226,24 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
                               </div>
 
                               <MyOwnTable  takeItem={takeItem} myOwnTable2={myOwnTable}/>
+
+                     {myOwnTable?.id && <div>
+                       <div className="grid grid-cols-4  mt-4 text-[9px] font-bold gap-2 border-2  border-gray-500 px-1 py-2">{myOwnTableT.map((item,index)=><div key={index}>
+            { <div className={` border-2 outline-none  ${cat_color[Items[item?.slice(0,4)]?.cat]} shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm p-1 text-center`}>
+              
+              {itemsInArabic[item.slice(0,1)]}{(item.includes('cls')||item.includes('lab')?(item.includes('cls')?`${item.slice(1,-3)}(${'نضري'})`:`${item.slice(1,-3)}(${'عملي'})`):item.slice(1))}
+              
+              </div>}
+            </div>)}</div>
+                    <div> 
+                      <button  onClick={()=>{
+                        onStage?setOnStage(false):setOnStage(true);
+                        onStage?setTakeItem(myOwnTableT):setTakeItem([]);
+                      }}
+                      className="px-4 bg-yellow-400 m-2 rounded-md shadow-md shadow-blue-500 text-sm font-bold"
+                      >{onStage?'معاينه':'لغاء المعاينه'}</button>
+                    </div>
+            </div>}
         </div>
     )
 
