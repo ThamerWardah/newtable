@@ -18,7 +18,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
   
   const Level = (theStudent)=>{
       let sum =0 ;
-      return theStudent.finished.map(item => Items[item]).map(item=>(item).significant).map(item=> sum+= parseInt(item)).pop() ||1;
+      return theStudent.finished.map(item => Items[item]).map(item=>(item).significant).map(item=> sum+= parseInt(item)).pop() ||0;
     };
  const studentOpenItems = (studentOpen)=>{
       return Items2.filter(item2=> item2.level<= studentOpen.level && (item2.pre ==='none'|| studentOpen.finished.includes(item2.pre)) && !studentOpen.finished.includes(item2.name)) 
@@ -139,7 +139,6 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
       
        const takeItemSlice = takeItem.map(item=>item.slice(0,4))
        const moreThanAExam = fainalExamT.map(day=>day.filter(item=>takeItemSlice.includes(item)));
-
     return (
         <div className="w-full h-full px-2 py-4 ">
            
@@ -220,12 +219,12 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
                                 <ul className=" px-4 list-disc text-xs font-bold"> 
                                   {moreThanAExam.map((day,index)=>(day.length>1 &&<li key={index} className="w-full">
                                         اليوم {examDays[index]}
-                                        {day.map(it =><span key={it} className="px-2 text-blue-600 font-bold text-sm">{itemsInArabic[it.slice(0,1)]}{it.slice(1)} </span>)}
+                                        {day.map(it =><span key={it} className="px-2 text-blue-600 font-bold text-sm"> {itemsInArabic[it.slice(0,1)]}{it.slice(1)} </span>)}
                                   </li>))} 
                                 </ul> 
                               </div>
 
-                              <MyOwnTable  takeItem={takeItem} myOwnTable2={myOwnTable}/>
+                           {takeItem.length > 0 && <MyOwnTable  takeItem={takeItem} myOwnTable2={myOwnTable}/>}
 
                      {myOwnTable?.id && <div>
                        <div className="grid grid-cols-4  mt-4 text-[9px] font-bold gap-2 border-2  border-gray-500 px-1 py-2">{myOwnTableT.map((item,index)=><div key={index}>
@@ -239,6 +238,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
                       <button  onClick={()=>{
                         onStage?setOnStage(false):setOnStage(true);
                         onStage?setTakeItem(myOwnTableT):setTakeItem([]);
+                        onStage?setNewToFinish([...student.finished,...myOwnTableT.filter(a=>!a.includes('lab'))]):setNewToFinish(student.finished)
                       }}
                       className="px-4 bg-yellow-400 m-2 rounded-md shadow-md shadow-blue-500 text-sm font-bold"
                       >{onStage?'معاينه':'لغاء المعاينه'}</button>

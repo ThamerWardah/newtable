@@ -17,8 +17,12 @@ export default function MyOwnTable({takeItem , myOwnTable2}){
         <div>
                 <div>
                    
-                    {!myOwnTable2?.id && <button onClick={()=>handleAdd()}>Add My Table </button>}
-                   { myOwnTable2?.id && <button onClick={()=>handleUpdate()}>Update My Table </button>}
+                    {!myOwnTable2?.id && <button onClick={()=>handleAdd()}
+                    className="bg-blue-500 text-white text-sm  active:bg-green-200 px-2 py-1 rounded-md shadow-md"
+                    >حفظ</button>}
+                   { myOwnTable2?.id && <button onClick={()=>handleUpdate()}
+                   className="bg-blue-500 text-white text-sm  active:bg-green-200 px-2 py-1 rounded-md shadow-md"
+                   >تحديث الجدول </button>}
                 </div>
         </div>
     )
