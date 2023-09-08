@@ -228,6 +228,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
                            {takeItem.length > 0 && !lastItemInTakeItem.includes('cls')&& <MyOwnTable  takeItem={takeItem} myOwnTable2={myOwnTable}/>}
 
                      {myOwnTable?.id && <div>
+                      <h1 dir="rtl" className="text-xs text-blue-300 font-bold">المواد التي سبق وسجلت عليها</h1>
                        <div className="grid grid-cols-4  mt-4 text-[9px] font-bold gap-2 border-2  border-gray-500 px-1 py-2">{myOwnTableT.map((item,index)=><div key={index}>
             { <div className={` border-2 outline-none  ${cat_color[Items[item?.slice(0,4)]?.cat]} shadow-md ${cat_shadow[Items[item?.slice(0,4)]?.cat]} bg-white rounded-sm p-1 text-center`}>
               
@@ -239,6 +240,7 @@ export default  function TheTable({finishedFetch, data2 ,table,fainalExamT ,myOw
                       <button  onClick={()=>{
                         onStage?setOnStage(false):setOnStage(true);
                         onStage?setTakeItem(myOwnTableT):setTakeItem([]);
+                        setLastItemInTakeItem('');
                         onStage?setNewToFinish([...student.finished,...myOwnTableT.filter(a=>!a.includes('lab'))]):setNewToFinish(student.finished)
                       }}
                       className="px-4 bg-yellow-400 my-2 rounded-md shadow-md shadow-blue-500 text-sm font-bold"

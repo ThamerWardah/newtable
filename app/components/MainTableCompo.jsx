@@ -1,8 +1,9 @@
 'use client'
 import {useState} from 'react'
 import Link from 'next/link';
-import { weekDays, lectureTimeDay, itemsInArabic } from './data';
+import { weekDays, lectureTimeDay, itemsInArabic, examDays} from './data';
 import clsx from 'clsx';
+
 
 const MainTable = ({onlineT2,onlineFainal,myOwnTable})=>{
     const [iFocus,setIFocus]=useState(false);
@@ -11,7 +12,7 @@ const MainTable = ({onlineT2,onlineFainal,myOwnTable})=>{
     const lecTime = lectureTimeDay;
     const onlineT = onlineT2?.table;
     const myOwnTableSlice = myOwnTable?.map(a=>a.slice(0,4)) ;
-    const allWeekDays = ["الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس","الأحد",  "الإثنين",  "الثلاثاء",   "الأربعاء" ,  "الخميس",];
+
     return(
         <main dir='rtl' className=' h-full '>
             <div className="p-4 shadow-sm ">
@@ -81,7 +82,7 @@ const MainTable = ({onlineT2,onlineFainal,myOwnTable})=>{
                             
                             </div>
                 {onlineFainal.map((day,dayNumber)=><div key={dayNumber}
-                className={clsx(`grid grid-cols-5 border-b-2 border-black`,dayNumber%2===0&&'bg-slate-300',dayNumber%2!==0&&'bg-green-200',fainalFocus&&'text-gray-400/60')} > <div className="flex flex-col gap-1  border-r-2 border-black justify-center items-center bg-red-300 text-black text-md font-extrabold">اليوم {allWeekDays[dayNumber]}</div>
+                className={clsx(`grid grid-cols-5 border-b-2 border-black`,dayNumber%2===0&&'bg-slate-300',dayNumber%2!==0&&'bg-green-200',fainalFocus&&'text-gray-400/60')} > <div className="flex flex-col gap-1  border-r-2 border-black justify-center items-center bg-red-300 text-black text-md font-extrabold">اليوم {examDays[dayNumber]}</div>
                         <div className="flex flex-col gap-1 border-r-2 border-black py-2 justify-center items-center">{day.map((item,index)=>(item.slice(1,2)==='1'&&<div key={index} className={clsx(myOwnTableSlice.includes(item)&&'text-black')}>
                         {itemsInArabic[item.slice(0,1)]}{item.slice(1)}
                         </div>))}

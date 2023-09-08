@@ -81,7 +81,14 @@ const CreateTable = ({onlineT,onlineFainal})=>{
                                     emptyTable[timeIndex]=emptyArray;
                                     emptyTable[timeIndex+1]=emptyArray;
                                     setEmptyArray([]);
-                                    }} className='p-2 bg-green-700'>set the next  too </button></div>
+                                    }} className='p-2 bg-green-600'>set the next  too </button></div>
+
+                        <div><button onClick={()=>{
+                                    setFirstOpen(false);
+                                    emptyTable[timeIndex]=emptyArray;
+                                    emptyTable[timeIndex-1]=emptyArray;
+                                    setEmptyArray([]);
+                                    }} className='p-2 bg-green-400'>set the pre  too </button></div>
                 </div>
 
 
