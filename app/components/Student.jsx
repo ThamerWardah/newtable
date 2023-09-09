@@ -23,6 +23,7 @@ export default function Student({oldFinished ,studentLevel, errorFinished, user}
  const userAdmin = user?.email;
 const [finishedItems , setFinishedItems] = useState(oldFinished);
  const [hamburger,setHamburger] = useState(false);
+ const [variant,setVariant]=useState(false)
 
 
 const howManyStages = [1,2,3,4];
@@ -31,19 +32,21 @@ const stages = howManyStages.map(a=>Items2.filter(item=>item.name.slice(1,2).sta
 const  student =   {finished:finishedItems}
 
 const handleAdd = async()=>{
+    setVariant(true);
     const fn = {finishedArray:student.finished.join('_')}
     axios.post('api/finishedItems',fn).then(()=>{
         toast.success('تم');
         rout.refresh();
-    }).catch(()=>toast.error('Something went wrong'));
+    }).catch(()=>toast.error('Something went wrong')).finally(()=>setVariant(false));
     
 }
 const handleUpdate = async()=>{
+    setVariant(true);
     const fn = {finishedArray:student.finished.join('_')}
     axios.post('api/update',fn).then(()=>{
         toast.success('تم تحديث البيانات');
         rout.refresh();
-    }).catch(()=>toast.error('Something went wrong'));
+    }).catch(()=>toast.error('Something went wrong')).finally(()=>setVariant(false));
     
 }
 
@@ -143,8 +146,8 @@ const handleUpdate = async()=>{
                      </div>)}
                 </div>
                      <div className="flex justify-center text-gray-800 mt-4">{(!parseInt(errorFinished.length)>0 && someChangHappend)?
-                            <button onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-r from-green-400/60 to-yellow-500/60 shadow-md   p-1 w-1/2 rounded-se-xl">اضافه</button>:(someChangHappend &&
-                            <button onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-r from-green-400/60 to-yellow-500/60 shadow-md  p-1 w-1/2 rounded-se-xl" >تحديث البيانات </button>)
+                            <button disabled={variant} onClick={()=>handleAdd()} className="outlien-none bg-gradient-to-r from-green-400/60 to-yellow-500/60 shadow-md   p-1 w-1/2 rounded-se-xl active:shadow-md active:shadow-blue-800">اضافه</button>:(someChangHappend &&
+                            <button disabled={variant} onClick={()=>handleUpdate()} className="outlien-none bg-gradient-to-r from-green-400/60 to-yellow-500/60 shadow-md  p-1 w-1/2 rounded-se-xl active:shadow-md active:shadow-blue-800" >تحديث البيانات </button>)
                             
                             }
                      </div>
