@@ -9,7 +9,7 @@ export default function MyOwnTable({takeItem , myOwnTable2}){
 
     const handleAdd = ()=>{
         axios.post('/api/myOwnTable',{myOwnTable}).then(()=>{
-            toast.success('Done');
+            toast.success('تم ');
             router.refresh();
         
         }).catch(()=>toast.error('Some thing went wrong'));
@@ -17,7 +17,7 @@ export default function MyOwnTable({takeItem , myOwnTable2}){
     const handleUpdate = ()=>{
         const id = myOwnTable2?.id;
         axios.post('/api/updateMyOwnTable',{myOwnTable,id}).then(()=>{
-            toast.success('Done');
+            toast.success('تم');
             router.refresh();
         }).catch(()=>toast.error('Some thing went wrong'));
     }

@@ -24,11 +24,11 @@ const MainTable = ({onlineT2,onlineFainal,myOwnTable})=>{
             <h1 className='text-center font-bold text-md'>جدول المحاظرات</h1>
                 <div className='w-full flex justify-between border-2 border-b-0 border-black  h-8 bg-blue-200/70'>
 
-                    <div className='w-[5%] text-center'>
-                        <button className='text-xs font-bold bg-black rounded-md shadow-sm p-1 text-white' onClick={()=>setIFocus(pre=>!pre)}>تركيز</button>
+                    <div className='w-[8%] text-center'>
+                        <button className='text-xs inline-block font-bold bg-black rounded-md shadow-sm p-1 text-white' onClick={()=>setIFocus(pre=>!pre)}>تركيز</button>
                     </div>
 
-                    <div className='w-[95%] grid grid-cols-6 grid-rows-1 items-center justify-center'>
+                    <div className='w-[92%] grid grid-cols-6 grid-rows-1 items-center justify-center'>
 
                         {lecTime.map((time,ina)=><div key={ina}
                             className='text-center text-[8px] font-bold'>

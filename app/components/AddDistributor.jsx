@@ -45,7 +45,7 @@ const AddDistributor = ()=>{
         axios.post('/api/register',data).then((callback)=>{
                  if(!callback?.error){
                         setWelcom(true);
-                        toast.success('Done');
+                        toast.success('تم انشاء الحساب');
                         setData(initialData);
                         router.refresh();
                         signIn('credentials',{...data,redirect:false}); 
@@ -57,7 +57,7 @@ const AddDistributor = ()=>{
 
         if(variant === 'login' ){
             signIn('credentials',{...data,redirect:false}).then((callback)=>{
-                if(!callback?.error){ setWelcom(true);toast.success("Loged in"); router.refresh()};
+                if(!callback?.error){ setWelcom(true);toast.success("تم تسجيل الدخول"); router.refresh()};
                 if(callback?.error){toast.error(callback.error)};
             }).finally(setIsLoading(false))
         }
