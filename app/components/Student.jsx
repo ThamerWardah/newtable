@@ -62,7 +62,7 @@ const handleUpdate = async()=>{
                <div className=" flex justify-between shadow-lg font-bold  p-2">
                 <GiHamburgerMenu className="text-2xl" onClick={()=>setHamburger(true)}/>
 
-                <Link className=' active:bg-green-200  shadow-md shadow-blue-300 py-1 px-2 rounded-md bg-green-300' href='/people'>تسجيل على المواد</Link>
+                <Link className=' active:bg-green-200  shadow-md text-sm text-gray-800 shadow-blue-300 py-1 px-2 rounded-md bg-green-300' href='/people'>تسجيل على المواد</Link>
                 
             </div>
 
